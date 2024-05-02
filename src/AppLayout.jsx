@@ -7,10 +7,10 @@ function AppLayout() {
   return (
     <StyledAppLayout>
       <FeedbackBoard />
-      <div>
+      <main>
         <SuggestionsHeader />
         <Outlet />
-      </div>
+      </main>
     </StyledAppLayout>
   );
 }
@@ -20,7 +20,8 @@ export default AppLayout;
 const StyledAppLayout = styled.div`
   display: flex;
 
-  & > div {
+  & > main {
+    width: 82.5rem;
     display: flex;
     flex-direction: column;
   }
