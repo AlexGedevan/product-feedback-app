@@ -133,4 +133,9 @@ const Option = styled.p`
   font-weight: 400;
   line-height: 2.312rem;
   color: #647196;
+  cursor: pointer;
+
+  &:hover {
+    color: #ad1fea;
+  }
 `;
