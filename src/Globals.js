@@ -17,5 +17,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Jost", sans-serif;
     background-color: #F7F8FD;
+    display: flex;
+    justify-content: center;
   }
 `;
