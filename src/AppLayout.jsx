@@ -19,10 +19,12 @@ export default AppLayout;
 
 const StyledAppLayout = styled.div`
   display: flex;
+  gap: 3rem;
 
   & > main {
     width: 82.5rem;
     display: flex;
     flex-direction: column;
+    gap: 2.4rem;
   }
 `;

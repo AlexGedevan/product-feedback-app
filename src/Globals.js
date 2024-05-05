@@ -19,5 +19,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #F7F8FD;
     display: flex;
     justify-content: center;
+    padding-top: 3rem;
   }
 `;
