@@ -1,51 +1,35 @@
 import styled from "styled-components";
-import face from "/assets/user-images/image-suzanne.jpg";
 
-function CommentsList({ currentSuggestion }) {
+import Comment from "./Comment";
+import { useSuggestion } from "../context/SuggestionContext";
+
+function CommentsList() {
+  const { currentSuggestion } = useSuggestion();
+  console.log(currentSuggestion);
+
   return (
     <StyledCommentsList>
       <h2>{currentSuggestion.comments?.length || 0} Comments</h2>
-      <Comment>
-        <img src={face} alt="face" />
-        <CommentContent>
-          <CommentUserInformation>
-            <div>
-              <h2>{currentSuggestion.comments[0].user.name}</h2>
-              <h3>@{currentSuggestion.comments[0].user.username}</h3>
-            </div>
-            <button>Reply</button>
-          </CommentUserInformation>
-          <p>{currentSuggestion.comments[0].content}</p>
-        </CommentContent>
-      </Comment>
+      {currentSuggestion.comments?.map((comment) => {
+        return <Comment key={comment.id} comment={comment} />;
+      })}
+      {/* <Comment /> */}
     </StyledCommentsList>
   );
 }
 
-const StyledCommentsList = styled.div``;
+const StyledCommentsList = styled.div`
+  padding: 2.4rem 3.2rem 4.8rem 3.2rem;
+  background: #ffffff;
+  border-radius: 10px;
 
-const Comment = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 3.2rem;
-  & > img {
-    border-radius: 10000px;
-    width: 40px;
-    align-self: flex-start;
+  & > h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.601rem;
+    letter-spacing: -0.25px;
+    color: #3a4374;
   }
-`;
-
-const CommentContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.7rem;
-  width: 100%;
-`;
-
-const CommentUserInformation = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 `;
 
 export default CommentsList;
