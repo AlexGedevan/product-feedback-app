@@ -4,10 +4,47 @@ import CheckIcon from "./CheckIcon";
 import arrowUp from "/assets/shared/icon-white-arrow-up.svg";
 import arrowDown from "/assets/shared/icon-white-arrow-down.svg";
 import Button from "./Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSuggestion } from "../context/SuggestionContext";
 
 function SuggestionsHeader() {
+  const [filter, setFilter] = useState("Most Upvotes");
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
+  const { suggestions, setSuggestions } = useSuggestion();
+
+  useEffect(
+    function () {
+      let filteredList = suggestions;
+
+      switch (filter) {
+        case "Most Upvotes":
+          filteredList.sort((a, b) => b.upvotes - a.upvotes);
+          setSuggestions((state) => [...filteredList]);
+          return;
+        case "Least Upvotes":
+          filteredList.sort((a, b) => a.upvotes - b.upvotes);
+          setSuggestions((state) => [...filteredList]);
+          return;
+        case "Most Comments":
+          filteredList.sort(
+            (a, b) => (b.comments?.length || 0) - (a.comments?.length || 0)
+          );
+          setSuggestions((state) => [...filteredList]);
+          return;
+        case "Least Comments":
+          filteredList.sort(
+            (a, b) => (a.comments?.length || 0) - (b.comments?.length || 0)
+          );
+          setSuggestions((state) => [...filteredList]);
+          return;
+
+        default:
+          console.log("Error");
+      }
+    },
+    [filter, setSuggestions]
+  );
+
   return (
     <StyledSuggestionsHeader>
       <FilterSuggestions>
@@ -17,7 +54,7 @@ function SuggestionsHeader() {
         </SuggestionsQuantity>
         <SortBy onClick={() => setIsOptionsOpen(!isOptionsOpen)}>
           <p>
-            Sort by : <span>Most Upvotes</span>
+            Sort by : <span>{filter}</span>
           </p>
           {!isOptionsOpen ? (
             <img src={arrowDown} alt="arrow-down-icon" />
@@ -34,19 +71,47 @@ function SuggestionsHeader() {
       {isOptionsOpen && (
         <FilterOptions>
           <div>
-            <Option>Most Upvotes</Option>
+            <Option
+              onClick={() => {
+                setFilter("Most Upvotes");
+                setIsOptionsOpen(false);
+              }}
+            >
+              Most Upvotes
+            </Option>
             <CheckIcon />
           </div>
           <div>
-            <Option>Least Upvotes</Option>
+            <Option
+              onClick={() => {
+                setFilter("Least Upvotes");
+                setIsOptionsOpen(false);
+              }}
+            >
+              Least Upvotes
+            </Option>
             <CheckIcon />
           </div>
           <div>
-            <Option>Most Comments</Option>
+            <Option
+              onClick={() => {
+                setFilter("Most Comments");
+                setIsOptionsOpen(false);
+              }}
+            >
+              Most Comments
+            </Option>
             <CheckIcon />
           </div>
           <div>
-            <Option>Least Comments</Option>
+            <Option
+              onClick={() => {
+                setFilter("Least Comments");
+                setIsOptionsOpen(false);
+              }}
+            >
+              Least Comments
+            </Option>
             <CheckIcon />
           </div>
         </FilterOptions>

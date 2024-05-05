@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Button({ children, bgcolor, hoverbgcolor }) {
+function Button({ children, bgcolor = "#4661E6", hoverbgcolor = "blue" }) {
   return (
     <StyledButton bgcolor={bgcolor} hoverbgcolor={hoverbgcolor}>
       {children}

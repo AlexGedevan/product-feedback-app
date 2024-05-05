@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { GlobalStyles } from "./Globals";
 import AppLayout from "./AppLayout";
 import Suggestions from "./pages/Suggestions";
+import SuggestionComments from "./pages/SuggestionComments";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
         path: "/",
       },
     ],
+  },
+  {
+    element: <SuggestionComments />,
+    path: "/comments/:id",
   },
 ]);
 

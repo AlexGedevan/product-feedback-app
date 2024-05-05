@@ -1,29 +1,32 @@
 import styled from "styled-components";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
+import { Link } from "react-router-dom";
 
 function SuggestionItem({ suggestion }) {
-  const { upvotes, title, description, category, comments } = suggestion;
+  const { upvotes, title, description, category, comments, id } = suggestion;
 
   const commentsCount = comments ? comments.length : 0;
   return (
-    <StyledSuggestionsItem>
-      <VoteAndContent>
-        <Upvote>
-          <img src={arrowUp} alt="arrow-up-icon" />
-          <span>{upvotes}</span>
-        </Upvote>
-        <SuggestionContent>
-          <Title>{title}</Title>
-          <Text>{description}</Text>
-          <Category>{category}</Category>
-        </SuggestionContent>
-      </VoteAndContent>
-      <SuggestionComments length={commentsCount}>
-        <img src={commentIcon} alt="comment-icon" />
-        <span>{commentsCount}</span>
-      </SuggestionComments>
-    </StyledSuggestionsItem>
+    <Link to={`/comments/${id}`}>
+      <StyledSuggestionsItem>
+        <VoteAndContent>
+          <Upvote>
+            <img src={arrowUp} alt="arrow-up-icon" />
+            <span>{upvotes}</span>
+          </Upvote>
+          <SuggestionContent>
+            <Title>{title}</Title>
+            <Text>{description}</Text>
+            <Category>{category}</Category>
+          </SuggestionContent>
+        </VoteAndContent>
+        <SuggestionComments length={commentsCount}>
+          <img src={commentIcon} alt="comment-icon" />
+          <span>{commentsCount}</span>
+        </SuggestionComments>
+      </StyledSuggestionsItem>
+    </Link>
   );
 }
 

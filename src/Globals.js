@@ -22,4 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+  a{
+    text-decoration: none;
+  }
 `;

@@ -7,7 +7,7 @@ function SuggestionContextProvider({ children }) {
   const [suggestions, setSuggestions] = useState(data.productRequests);
 
   return (
-    <SuggestionContext.Provider value={{ suggestions }}>
+    <SuggestionContext.Provider value={{ suggestions, setSuggestions }}>
       {children}
     </SuggestionContext.Provider>
   );
