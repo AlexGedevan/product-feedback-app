@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import iconSuggestions from "/assets/suggestions/icon-suggestions.svg";
 import CheckIcon from "./CheckIcon";
-import arrowUp from "/assets/shared/icon-arrow-up.svg";
-import arrowDown from "/assets/shared/icon-arrow-down.svg";
+import arrowUp from "/assets/shared/icon-white-arrow-up.svg";
+import arrowDown from "/assets/shared/icon-white-arrow-down.svg";
+import Button from "./Button";
+import { useState } from "react";
 
 function SuggestionsHeader() {
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   return (
     <StyledSuggestionsHeader>
       <FilterSuggestions>
@@ -12,32 +15,42 @@ function SuggestionsHeader() {
           <img src={iconSuggestions} alt="icon suggestions" />
           <p>6 Suggestions</p>
         </SuggestionsQuantity>
-        <SortBy>
+        <SortBy onClick={() => setIsOptionsOpen(!isOptionsOpen)}>
           <p>
             Sort by : <span>Most Upvotes</span>
           </p>
-          <img src={arrowDown} alt="arrow down icon" />
+          {!isOptionsOpen ? (
+            <img src={arrowDown} alt="arrow-down-icon" />
+          ) : (
+            <img src={arrowUp} alt="arrow-up-icon" />
+          )}
         </SortBy>
       </FilterSuggestions>
 
-      <FilterOptions>
-        <div>
-          <Option>Most Upvotes</Option>
-          <CheckIcon />
-        </div>
-        <div>
-          <Option>Least Upvotes</Option>
-          <CheckIcon />
-        </div>
-        <div>
-          <Option>Most Comments</Option>
-          <CheckIcon />
-        </div>
-        <div>
-          <Option>Least Comments</Option>
-          <CheckIcon />
-        </div>
-      </FilterOptions>
+      <Button bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
+        + Add Feedback
+      </Button>
+
+      {isOptionsOpen && (
+        <FilterOptions>
+          <div>
+            <Option>Most Upvotes</Option>
+            <CheckIcon />
+          </div>
+          <div>
+            <Option>Least Upvotes</Option>
+            <CheckIcon />
+          </div>
+          <div>
+            <Option>Most Comments</Option>
+            <CheckIcon />
+          </div>
+          <div>
+            <Option>Least Comments</Option>
+            <CheckIcon />
+          </div>
+        </FilterOptions>
+      )}
     </StyledSuggestionsHeader>
   );
 }
@@ -50,6 +63,8 @@ const StyledSuggestionsHeader = styled.div`
   background-color: #373f68;
   border-radius: 10px;
   padding: 1.4rem 1.6rem 1.4rem 2.4rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const FilterSuggestions = styled.div`
@@ -76,6 +91,7 @@ const SortBy = styled.div`
   display: flex;
   align-items: center;
   gap: 0.9rem;
+  cursor: pointer;
 
   & > p {
     font-size: 1.4rem;
