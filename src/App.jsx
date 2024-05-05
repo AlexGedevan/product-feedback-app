@@ -2,7 +2,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { GlobalStyles } from "./Globals";
 import AppLayout from "./AppLayout";
 import Suggestions from "./pages/Suggestions";
-import { ThemeProvider } from "styled-components";
 
 const router = createBrowserRouter([
   {
@@ -16,15 +15,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-const lightTheme = {};
-
 function App() {
   return (
     <>
-      <ThemeProvider theme={lightTheme}>
-        <GlobalStyles />
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <GlobalStyles />
+      <RouterProvider router={router} />
     </>
   );
 }

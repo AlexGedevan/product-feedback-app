@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import SuggestionItem from "../components/SuggestionItem";
+import { useSuggestion } from "../context/SuggestionContext";
 
 function Suggestions() {
+  const { suggestions } = useSuggestion();
+
   return (
     <SuggestionsList>
-      <SuggestionItem />
-      <SuggestionItem />
-      <SuggestionItem />
-      <SuggestionItem />
-      <SuggestionItem />
-      <SuggestionItem />
-      <SuggestionItem />
+      {suggestions.map((suggestion) => {
+        return <SuggestionItem key={suggestion.id} suggestion={suggestion} />;
+      })}
     </SuggestionsList>
   );
 }

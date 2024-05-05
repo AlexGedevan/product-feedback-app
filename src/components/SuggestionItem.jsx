@@ -2,23 +2,26 @@ import styled from "styled-components";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
 
-function SuggestionItem() {
+function SuggestionItem({ suggestion }) {
+  const { upvotes, title, description, category, comments } = suggestion;
+
+  const commentsCount = comments ? comments.length : 0;
   return (
     <StyledSuggestionsItem>
       <VoteAndContent>
         <Upvote>
           <img src={arrowUp} alt="arrow-up-icon" />
-          <span>112</span>
+          <span>{upvotes}</span>
         </Upvote>
         <SuggestionContent>
-          <Header>Add tags for solutions</Header>
-          <Text>Easier to search for solutions based on a specific stack.</Text>
-          <Category>Enhancement</Category>
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+          <Category>{category}</Category>
         </SuggestionContent>
       </VoteAndContent>
-      <SuggestionComments>
-        <img src={commentIcon} alt="" />
-        <span>2</span>
+      <SuggestionComments length={commentsCount}>
+        <img src={commentIcon} alt="comment-icon" />
+        <span>{commentsCount}</span>
       </SuggestionComments>
     </StyledSuggestionsItem>
   );
@@ -32,6 +35,15 @@ const StyledSuggestionsItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    & h2 {
+      color: #4661e6;
+    }
+  }
 `;
 
 const VoteAndContent = styled.div`
@@ -49,14 +61,19 @@ const Upvote = styled.div`
   border-radius: 10px;
   height: 5.3rem;
   align-self: flex-start;
+  transition: all 0.3s;
 
   & > span {
     font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.879rem;
     letter-spacing: -0.1805555522441864px;
-    /* text-align: center; */
     color: #3a4374;
+  }
+
+  &:hover {
+    background: #cfd7ff;
+    cursor: pointer;
   }
 `;
 
@@ -66,7 +83,7 @@ const SuggestionContent = styled.div`
   align-items: flex-start;
 `;
 
-const Header = styled.h2`
+const Title = styled.h2`
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 2.601rem;
@@ -104,5 +121,6 @@ const SuggestionComments = styled.div`
     line-height: 2.312rem;
     letter-spacing: -0.2222222238779068px;
     color: #3a4374;
+    opacity: ${(props) => props.length === 0 && "50%"};
   }
 `;
