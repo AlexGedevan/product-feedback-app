@@ -1,24 +1,30 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import arrowLeft from "/assets/shared/icon-arrow-left.svg";
 import Button from "../ui/Button";
 import { useSuggestion } from "../context/SuggestionContext";
 import SuggestionItem from "../components/SuggestionItem";
 import CommentsList from "../components/CommentsList";
+import { useEffect } from "react";
 
 function SuggestionComments() {
   const { id } = useParams();
   const { suggestions } = useSuggestion();
-  const currentSuggestion = suggestions.find(
+  const singleSuggestion = suggestions.find(
     (suggestion) => Number(suggestion.id) === Number(id)
   );
 
-  console.log(currentSuggestion);
+  const { setCurrentSuggestion, currentSuggestion } = useSuggestion();
+
+  useEffect(() => {
+    setCurrentSuggestion(singleSuggestion);
+  }, [setCurrentSuggestion, singleSuggestion]);
+
   return (
     <StyledSuggestionComments>
       <SuggestionCommentsHeader>
         <Link to={-1}>
-          <img src={arrowLeft} alt="arrow left" />
+          <img src={arrowLeft} alt="arrow-left" />
           <GoBack>Go Back</GoBack>
         </Link>
         <Button bgcolor="#4661E6">Edit Feedback</Button>
