@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import CommentOrReply from "./CommentOrReply";
+import AddReply from "./AddReply";
 
 function Comment({ comment }) {
   return (
@@ -15,6 +16,7 @@ function Comment({ comment }) {
           })}
         </Reply>
       )}
+      <AddReply />
     </CommentAndRaply>
   );
 }
