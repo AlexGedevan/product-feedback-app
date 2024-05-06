@@ -39,7 +39,7 @@ function SuggestionsHeader() {
           return;
 
         default:
-          console.log("Error");
+          return;
       }
     },
     [filter, setSuggestions]

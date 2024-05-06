@@ -5,7 +5,6 @@ import { useSuggestion } from "../context/SuggestionContext";
 
 function CommentsList() {
   const { currentSuggestion } = useSuggestion();
-  console.log(currentSuggestion);
 
   return (
     <StyledCommentsList>

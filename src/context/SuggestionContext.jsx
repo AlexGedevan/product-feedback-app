@@ -6,8 +6,6 @@ const SuggestionContext = createContext();
 function SuggestionContextProvider({ children }) {
   const [suggestions, setSuggestions] = useState(data.productRequests);
   const [currentSuggestion, setCurrentSuggestion] = useState([]);
-  console.log(currentSuggestion);
-
   return (
     <SuggestionContext.Provider
       value={{

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CommentOrReply from "./CommentOrReply";
 
 function Comment({ comment }) {
-  console.log(comment);
   return (
     <CommentAndRaply>
       <StyledComment>
