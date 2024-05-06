@@ -37,7 +37,7 @@ const StyledCommentorReply = styled.div`
   display: flex;
   gap: 3.2rem;
   margin-top: 2.8rem;
-  padding-bottom: 3.2rem;
+  /* padding-bottom: 3.2rem; */
 
   & > img {
     border-radius: 10000px;

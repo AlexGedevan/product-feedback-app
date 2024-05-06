@@ -12,35 +12,36 @@ function SuggestionsHeader() {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const { suggestions, setSuggestions } = useSuggestion();
 
-  useEffect(
-    function () {
-      switch (filter) {
-        case "Most Upvotes":
-          suggestions.sort((a, b) => b.upvotes - a.upvotes);
-          setSuggestions([...suggestions]);
-          return;
-        case "Least Upvotes":
-          suggestions.sort((a, b) => a.upvotes - b.upvotes);
-          setSuggestions([...suggestions]);
-          return;
-        case "Most Comments":
-          suggestions.sort(
+  useEffect(() => {
+    switch (filter) {
+      case "Most Upvotes":
+        setSuggestions((prevSuggestions) =>
+          [...prevSuggestions].sort((a, b) => b.upvotes - a.upvotes)
+        );
+        return;
+      case "Least Upvotes":
+        setSuggestions((prevSuggestions) =>
+          [...prevSuggestions].sort((a, b) => a.upvotes - b.upvotes)
+        );
+        return;
+      case "Most Comments":
+        setSuggestions((prevSuggestions) =>
+          [...prevSuggestions].sort(
             (a, b) => (b.comments?.length || 0) - (a.comments?.length || 0)
-          );
-          setSuggestions([...suggestions]);
-          return;
-        case "Least Comments":
-          suggestions.sort(
+          )
+        );
+        return;
+      case "Least Comments":
+        setSuggestions((prevSuggestions) =>
+          [...prevSuggestions].sort(
             (a, b) => (a.comments?.length || 0) - (b.comments?.length || 0)
-          );
-          setSuggestions([...suggestions]);
-          return;
-        default:
-          return;
-      }
-    },
-    [filter, setSuggestions]
-  );
+          )
+        );
+        return;
+      default:
+        return;
+    }
+  }, [filter, setSuggestions]);
 
   return (
     <StyledSuggestionsHeader>
