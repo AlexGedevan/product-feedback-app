@@ -6,6 +6,7 @@ const SuggestionContext = createContext();
 function SuggestionContextProvider({ children }) {
   const [suggestions, setSuggestions] = useState(data.productRequests);
   const [currentSuggestion, setCurrentSuggestion] = useState([]);
+  const [replyId, setReplyId] = useState(null);
   return (
     <SuggestionContext.Provider
       value={{
@@ -13,6 +14,8 @@ function SuggestionContextProvider({ children }) {
         setSuggestions,
         currentSuggestion,
         setCurrentSuggestion,
+        replyId,
+        setReplyId,
       }}
     >
       {children}

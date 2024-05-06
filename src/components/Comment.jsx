@@ -2,30 +2,33 @@ import styled from "styled-components";
 
 import CommentOrReply from "./CommentOrReply";
 import AddReply from "../ui/AddReply";
+
+import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
 
 function Comment({ comment }) {
-  const [isReply, setIsReply] = useState(false);
+  const [anyId, setAnyId] = useState(0);
+  const { replyId } = useSuggestion();
 
   return (
     <CommentAndReply>
       <StyledComment>
-        <CommentOrReply setIsReply={setIsReply} commentOrReply={comment} />
+        <CommentOrReply commentOrReply={comment} setAnyId={setAnyId} />
       </StyledComment>
       {comment.replies && (
         <Reply>
           {comment?.replies.map((reply, index) => {
             return (
               <CommentOrReply
-                setIsReply={setIsReply}
                 commentOrReply={reply}
                 key={index}
+                setAnyId={setAnyId}
               />
             );
           })}
         </Reply>
       )}
-      {isReply && <AddReply alreadyreplied={comment?.replies} />}
+      {replyId === anyId && <AddReply alreadyreplied={comment?.replies} />}
     </CommentAndReply>
   );
 }

@@ -1,7 +1,15 @@
 import styled from "styled-components";
+import { useSuggestion } from "../context/SuggestionContext";
 
-function CommentOrReply({ commentOrReply, setIsReply }) {
-  const { content, user } = commentOrReply;
+function CommentOrReply({ commentOrReply, setAnyId }) {
+  const { setReplyId } = useSuggestion();
+
+  function handleWhosReplying(id) {
+    setReplyId(id);
+    setAnyId(id);
+  }
+
+  const { content, user, id } = commentOrReply;
   return (
     <StyledCommentorReply>
       <img src={user.image} alt="face" />
@@ -13,7 +21,7 @@ function CommentOrReply({ commentOrReply, setIsReply }) {
           </User>
           <p
             onClick={() => {
-              setIsReply((reply) => !reply);
+              handleWhosReplying(id);
             }}
           >
             Reply
