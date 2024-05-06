@@ -5,7 +5,7 @@ import CommentOrReply from "./CommentOrReply";
 function Comment({ comment }) {
   console.log(comment);
   return (
-    <>
+    <CommentAndRaply>
       <StyledComment>
         <CommentOrReply commentOrReply={comment} />
       </StyledComment>
@@ -16,16 +16,20 @@ function Comment({ comment }) {
           })}
         </Reply>
       )}
-    </>
+    </CommentAndRaply>
   );
 }
 
 export default Comment;
+
+const CommentAndRaply = styled.div``;
 
 const StyledComment = styled.div`
   border-bottom: 1px solid rgba(140, 146, 179, 0.25);
 `;
 
 const Reply = styled.div`
-  padding-left: 4.5rem;
+  margin-left: 2rem;
+  padding-left: 2.4rem;
+  border-left: 1px solid rgba(140, 146, 179, 0.25);
 `;

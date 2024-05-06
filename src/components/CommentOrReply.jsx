@@ -1,21 +1,24 @@
 import styled from "styled-components";
-import face from "/assets/user-images/image-suzanne.jpg";
 
 function CommentOrReply({ commentOrReply }) {
-  const { content } = commentOrReply;
-  //   const { content: replyContent } = reply;
+  const { content, user } = commentOrReply;
   return (
     <StyledCommentorReply>
-      <img src={face} alt="face" />
+      <img src={user.image} alt="face" />
       <CommentContent>
         <CommentUserInformation>
           <User>
-            <h2>Elijah Moss</h2>
-            <h3>@hexagon.bestagon</h3>
+            <h2>{user.name}</h2>
+            <h3>@{user.username}</h3>
           </User>
           <p>Reply</p>
         </CommentUserInformation>
-        <p>{content}</p>
+        <p>
+          {commentOrReply.replyingTo && (
+            <ReplyingTo>@{commentOrReply.replyingTo} </ReplyingTo>
+          )}
+          {content}
+        </p>
       </CommentContent>
     </StyledCommentorReply>
   );
@@ -80,4 +83,9 @@ const User = styled.div`
     line-height: 2.023rem;
     color: #647196;
   }
+`;
+
+const ReplyingTo = styled.span`
+  color: #ad1fea;
+  font-weight: 700;
 `;
