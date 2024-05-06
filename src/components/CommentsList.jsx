@@ -13,7 +13,6 @@ function CommentsList() {
       {currentSuggestion.comments?.map((comment) => {
         return <Comment key={comment.id} comment={comment} />;
       })}
-      {/* <Comment /> */}
     </StyledCommentsList>
   );
 }
