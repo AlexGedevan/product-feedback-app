@@ -10,7 +10,7 @@ import { useSuggestion } from "../context/SuggestionContext";
 function SuggestionsHeader() {
   const [filter, setFilter] = useState("Most Upvotes");
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const { suggestions, setSuggestions } = useSuggestion();
+  const { setSuggestions } = useSuggestion();
 
   useEffect(() => {
     switch (filter) {
