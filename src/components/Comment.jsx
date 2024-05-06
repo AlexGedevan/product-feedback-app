@@ -7,13 +7,13 @@ import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
 
 function Comment({ comment }) {
-  const [anyId, setAnyId] = useState(0);
+  const [currentId, setCurrentId] = useState(0);
   const { replyId } = useSuggestion();
 
   return (
     <CommentAndReply>
       <StyledComment>
-        <CommentOrReply commentOrReply={comment} setAnyId={setAnyId} />
+        <CommentOrReply commentOrReply={comment} setCurrentId={setCurrentId} />
       </StyledComment>
       {comment.replies && (
         <Reply>
@@ -22,13 +22,13 @@ function Comment({ comment }) {
               <CommentOrReply
                 commentOrReply={reply}
                 key={index}
-                setAnyId={setAnyId}
+                setCurrentId={setCurrentId}
               />
             );
           })}
         </Reply>
       )}
-      {replyId === anyId && <AddReply alreadyreplied={comment?.replies} />}
+      {replyId === currentId && <AddReply alreadyreplied={comment?.replies} />}
     </CommentAndReply>
   );
 }
