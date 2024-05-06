@@ -6,6 +6,7 @@ import { useSuggestion } from "../context/SuggestionContext";
 import SuggestionItem from "../components/SuggestionItem";
 import CommentsList from "../components/CommentsList";
 import { useEffect } from "react";
+import AddComent from "../components/AddComent";
 
 function SuggestionComments() {
   const { id } = useParams();
@@ -31,6 +32,8 @@ function SuggestionComments() {
       </SuggestionCommentsHeader>
       <SuggestionItem suggestion={currentSuggestion} />
       <CommentsList currentSuggestion={currentSuggestion} />
+
+      <AddComent />
     </StyledSuggestionComments>
   );
 }

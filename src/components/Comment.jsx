@@ -1,31 +1,43 @@
 import styled from "styled-components";
 
 import CommentOrReply from "./CommentOrReply";
+import AddReply from "../ui/AddReply";
+import { useState } from "react";
 
 function Comment({ comment }) {
+  const [isReply, setIsReply] = useState(false);
+
   return (
-    <CommentAndRaply>
+    <CommentAndReply>
       <StyledComment>
-        <CommentOrReply commentOrReply={comment} />
+        <CommentOrReply setIsReply={setIsReply} commentOrReply={comment} />
       </StyledComment>
       {comment.replies && (
         <Reply>
           {comment?.replies.map((reply, index) => {
-            return <CommentOrReply commentOrReply={reply} key={index} />;
+            return (
+              <CommentOrReply
+                setIsReply={setIsReply}
+                commentOrReply={reply}
+                key={index}
+              />
+            );
           })}
         </Reply>
       )}
-    </CommentAndRaply>
+      {isReply && <AddReply alreadyreplied={comment?.replies} />}
+    </CommentAndReply>
   );
 }
 
 export default Comment;
 
-const CommentAndRaply = styled.div``;
-
-const StyledComment = styled.div`
+const CommentAndReply = styled.div`
   border-bottom: 1px solid rgba(140, 146, 179, 0.25);
+  padding-bottom: 3.2rem;
 `;
+
+const StyledComment = styled.div``;
 
 const Reply = styled.div`
   margin-left: 2rem;

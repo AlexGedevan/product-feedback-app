@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function CommentOrReply({ commentOrReply }) {
+function CommentOrReply({ commentOrReply, setIsReply }) {
   const { content, user } = commentOrReply;
   return (
     <StyledCommentorReply>
@@ -11,7 +11,13 @@ function CommentOrReply({ commentOrReply }) {
             <h2>{user.name}</h2>
             <h3>@{user.username}</h3>
           </User>
-          <p>Reply</p>
+          <p
+            onClick={() => {
+              setIsReply((reply) => !reply);
+            }}
+          >
+            Reply
+          </p>
         </CommentUserInformation>
         <p>
           {commentOrReply.replyingTo && (
@@ -65,6 +71,12 @@ const CommentUserInformation = styled.div`
     font-weight: 600;
     line-height: 1.879px;
     color: #4661e6;
+    transition: all 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 `;
 

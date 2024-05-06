@@ -14,30 +14,27 @@ function SuggestionsHeader() {
 
   useEffect(
     function () {
-      let filteredList = suggestions;
-
       switch (filter) {
         case "Most Upvotes":
-          filteredList.sort((a, b) => b.upvotes - a.upvotes);
-          setSuggestions((state) => [...filteredList]);
+          suggestions.sort((a, b) => b.upvotes - a.upvotes);
+          setSuggestions([...suggestions]);
           return;
         case "Least Upvotes":
-          filteredList.sort((a, b) => a.upvotes - b.upvotes);
-          setSuggestions((state) => [...filteredList]);
+          suggestions.sort((a, b) => a.upvotes - b.upvotes);
+          setSuggestions([...suggestions]);
           return;
         case "Most Comments":
-          filteredList.sort(
+          suggestions.sort(
             (a, b) => (b.comments?.length || 0) - (a.comments?.length || 0)
           );
-          setSuggestions((state) => [...filteredList]);
+          setSuggestions([...suggestions]);
           return;
         case "Least Comments":
-          filteredList.sort(
+          suggestions.sort(
             (a, b) => (a.comments?.length || 0) - (b.comments?.length || 0)
           );
-          setSuggestions((state) => [...filteredList]);
+          setSuggestions([...suggestions]);
           return;
-
         default:
           return;
       }
