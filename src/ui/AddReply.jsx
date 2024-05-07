@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 function AddReply({ alreadyreplied }) {
   const { suggestions, setSuggestions } = useSuggestion();
   const [replyText, setReplyText] = useState("");
-  const { replyId, currentUser, commentId } = useSuggestion();
+  const { replyId, setReplyId, currentUser, commentId } = useSuggestion();
   const { id } = useParams();
 
   function handleSubmit(e) {
@@ -33,28 +33,33 @@ function AddReply({ alreadyreplied }) {
       id: crypto.randomUUID(),
       content: replyText,
       replyingTo:
-        suggestions[suggestionIndex]?.comments[commentIndex].replies[replyIndex]
-          ?.user.username ||
-        suggestions[suggestionIndex].comments[commentIndex].user.username,
+        "replies" in suggestions[suggestionIndex]?.comments[commentIndex]
+          ? suggestions[suggestionIndex]?.comments[commentIndex].replies[
+              replyIndex
+            ]?.user.username
+          : suggestions[suggestionIndex].comments[commentIndex].user.username,
       user: { ...currentUser },
     };
 
-    // const commentIndex = suggestions[suggestionIndex]?.comments.findIndex(
-    //   (com) => com.id === commentId
-    // );
-
-    // const replyIndex = suggestions[suggestionIndex]?.comments[
-    //   commentIndex
-    // ]?.replies?.findIndex((rep) => rep.id === replyId);
-
-    // const replyUser =
-    //   suggestions[suggestionIndex]?.comments[commentIndex]?.replies[replyIndex]
-    //     ?.user;
-    // const replyingToUser = replyUser
-    //   ? replyUser.username
-    //   : suggestions[suggestionIndex].comments[commentIndex].user.username;
-
     console.log(newReply);
+    if (!("replies" in suggestions[suggestionIndex].comments[commentIndex])) {
+      let replies = [];
+      replies.push(newReply);
+      suggestions[suggestionIndex].comments[commentIndex] = {
+        ...suggestions[suggestionIndex].comments[commentIndex],
+        replies,
+      };
+      setSuggestions([...suggestions]);
+    } else {
+      suggestions[suggestionIndex].comments[commentIndex].replies.push(
+        newReply
+      );
+      suggestions[suggestionIndex].comments[commentIndex] = {
+        ...suggestions[suggestionIndex].comments[commentIndex],
+      };
+      setSuggestions([...suggestions]);
+    }
+    setReplyId(null);
   }
 
   return (
