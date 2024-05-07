@@ -77,7 +77,7 @@ function SuggestionsHeader() {
             >
               Most Upvotes
             </Option>
-            <CheckIcon />
+            {filter === "Most Upvotes" && <CheckIcon />}
           </div>
           <div>
             <Option
@@ -88,7 +88,7 @@ function SuggestionsHeader() {
             >
               Least Upvotes
             </Option>
-            <CheckIcon />
+            {filter === "Least Upvotes" && <CheckIcon />}
           </div>
           <div>
             <Option
@@ -99,7 +99,7 @@ function SuggestionsHeader() {
             >
               Most Comments
             </Option>
-            <CheckIcon />
+            {filter === "Most Comments" && <CheckIcon />}
           </div>
           <div>
             <Option
@@ -110,7 +110,7 @@ function SuggestionsHeader() {
             >
               Least Comments
             </Option>
-            <CheckIcon />
+            {filter === "Least Comments" && <CheckIcon />}
           </div>
         </FilterOptions>
       )}

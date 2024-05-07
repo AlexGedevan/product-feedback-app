@@ -33,7 +33,7 @@ function SuggestionComments() {
       <SuggestionItem suggestion={currentSuggestion} />
       <CommentsList currentSuggestion={currentSuggestion} />
 
-      <AddComent />
+      <AddComent id={id} />
     </StyledSuggestionComments>
   );
 }

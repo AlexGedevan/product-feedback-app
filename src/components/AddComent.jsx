@@ -1,11 +1,53 @@
 import styled from "styled-components";
 import Button from "../ui/Button";
+import { useSuggestion } from "../context/SuggestionContext";
+import { useState } from "react";
 
-function AddComent() {
+function AddComent({ id }) {
+  const { suggestions, setSuggestions, currentUser } = useSuggestion();
+  const [commentText, setCommentText] = useState();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!commentText) return;
+    const newComment = {
+      id: crypto.randomUUID(),
+      content: commentText,
+      user: { ...currentUser },
+    };
+    console.log(newComment);
+    const currentSuggestion = suggestions.findIndex(
+      (suggestion) => Number(suggestion.id) === Number(id)
+    );
+
+    if (!suggestions[currentSuggestion].comments) {
+      let comments = [];
+      comments.push(newComment);
+      suggestions[currentSuggestion] = {
+        ...suggestions[currentSuggestion],
+        comments,
+      };
+      setSuggestions([...suggestions]);
+      return;
+    }
+
+    suggestions[currentSuggestion].comments = [
+      ...suggestions[currentSuggestion].comments,
+      newComment,
+    ];
+    setSuggestions([...suggestions]);
+    setCommentText("");
+  }
+
   return (
-    <StyledAddComment>
+    <StyledAddComment onSubmit={handleSubmit}>
       <h2>Add Comment</h2>
-      <CommentInput type="text" placeholder="Type your comment here" />
+      <CommentInput
+        type="text"
+        placeholder="Type your comment here"
+        onChange={(e) => setCommentText(e.target.value)}
+        value={commentText}
+      />
       <SubmitComment>
         <p>250 Characters left</p>
         <Button>Post Comment</Button>
@@ -16,7 +58,7 @@ function AddComent() {
 
 export default AddComent;
 
-const StyledAddComment = styled.div`
+const StyledAddComment = styled.form`
   padding: 2.4rem 3.2rem 3.2rem 3.4rem;
   background: #ffffff;
   border-radius: 1rem;
