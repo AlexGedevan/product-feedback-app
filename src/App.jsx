@@ -3,6 +3,7 @@ import { GlobalStyles } from "./Globals";
 import AppLayout from "./AppLayout";
 import Suggestions from "./pages/Suggestions";
 import SuggestionComments from "./pages/SuggestionComments";
+import CreateFeedback from "./pages/CreateFeedback";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     element: <SuggestionComments />,
     path: "/:id/comments",
+  },
+  {
+    element: <CreateFeedback />,
+    path: "/createFeedback",
   },
 ]);
 
