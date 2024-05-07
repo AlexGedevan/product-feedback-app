@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
-function Button({ children, bgcolor = "#AD1FEA", hoverbgcolor = "blue" }) {
+function Button({
+  children,
+  bgcolor = "#AD1FEA",
+  hoverbgcolor = "blue",
+  onClick,
+}) {
   return (
-    <StyledButton bgcolor={bgcolor} hoverbgcolor={hoverbgcolor}>
+    <StyledButton
+      bgcolor={bgcolor}
+      hoverbgcolor={hoverbgcolor}
+      onClick={onClick}
+    >
       {children}
     </StyledButton>
   );

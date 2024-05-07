@@ -6,12 +6,14 @@ import arrowDown from "/assets/shared/icon-white-arrow-down.svg";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import { useSuggestion } from "../context/SuggestionContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SuggestionsHeader() {
   const [filter, setFilter] = useState("Most Upvotes");
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const { setSuggestions } = useSuggestion();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     switch (filter) {
@@ -62,11 +64,14 @@ function SuggestionsHeader() {
           )}
         </SortBy>
       </FilterSuggestions>
-      <Link to="/createFeedback">
-        <Button bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
-          + Add Feedback
-        </Button>
-      </Link>
+
+      <Button
+        bgcolor="#AD1FEA"
+        hoverbgcolor="#C75AF6"
+        onClick={() => navigate("/createFeedback")}
+      >
+        + Add Feedback
+      </Button>
 
       {isOptionsOpen && (
         <FilterOptions>
