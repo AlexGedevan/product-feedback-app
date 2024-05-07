@@ -2,24 +2,59 @@ import styled from "styled-components";
 import Button from "./Button";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 function AddReply({ alreadyreplied }) {
   const { suggestions, setSuggestions } = useSuggestion();
-  const [replyText, setReplyText] = useState();
-  const { replyId } = useSuggestion();
+  const [replyText, setReplyText] = useState("");
+  const { replyId, currentUser, commentId } = useSuggestion();
+  const { id } = useParams();
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(commentId);
+    console.log(replyId);
 
-    const suggestion = suggestions.find(
-      (suggestion) => suggestion?.comments?.id == replyId
+    const suggestionIndex = suggestions.findIndex(
+      (item) => item.id === Number(id)
     );
-    console.log(suggestion);
 
-    // const newReply = {
-    //   id: crypto.randomUUID(),
-    //   content: replyText,
-    // };
+    const commentIndex = suggestions[suggestionIndex].comments.findIndex(
+      (com) => com.id === commentId
+    );
+    console.log(commentIndex);
+    const replyIndex = suggestions[suggestionIndex].comments[
+      commentIndex
+    ].replies?.findIndex((rep) => rep.id === replyId);
+    console.log(replyIndex);
+    console.log(suggestions[suggestionIndex].comments[commentIndex].replies);
+
+    const newReply = {
+      id: crypto.randomUUID(),
+      content: replyText,
+      replyingTo:
+        suggestions[suggestionIndex]?.comments[commentIndex].replies[replyIndex]
+          ?.user.username ||
+        suggestions[suggestionIndex].comments[commentIndex].user.username,
+      user: { ...currentUser },
+    };
+
+    // const commentIndex = suggestions[suggestionIndex]?.comments.findIndex(
+    //   (com) => com.id === commentId
+    // );
+
+    // const replyIndex = suggestions[suggestionIndex]?.comments[
+    //   commentIndex
+    // ]?.replies?.findIndex((rep) => rep.id === replyId);
+
+    // const replyUser =
+    //   suggestions[suggestionIndex]?.comments[commentIndex]?.replies[replyIndex]
+    //     ?.user;
+    // const replyingToUser = replyUser
+    //   ? replyUser.username
+    //   : suggestions[suggestionIndex].comments[commentIndex].user.username;
+
+    console.log(newReply);
   }
 
   return (

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useSuggestion } from "../context/SuggestionContext";
 
-function CommentOrReply({ commentOrReply, setCurrentId }) {
-  const { setReplyId, replyId } = useSuggestion();
+function CommentOrReply({ commentOrReply, setCurrentId, commentId }) {
+  const { setReplyId, replyId, setCommentId } = useSuggestion();
 
   function handleWhosReplying(id) {
     if (replyId === id) {
@@ -12,6 +12,7 @@ function CommentOrReply({ commentOrReply, setCurrentId }) {
     }
     setReplyId(id);
     setCurrentId(id);
+    setCommentId(commentId);
   }
 
   const { content, user, id } = commentOrReply;
