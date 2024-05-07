@@ -8,7 +8,7 @@ function SuggestionItem({ suggestion }) {
 
   const commentsCount = comments ? comments.length : 0;
   return (
-    <Link to={`/comments/${id}`}>
+    <Link to={`/${id}/comments/`}>
       <StyledSuggestionsItem>
         <VoteAndContent>
           <Upvote>

@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import { useSuggestion } from "../context/SuggestionContext";
 
-function CommentOrReply({ commentOrReply, setCurrentId }) {
-  const { setReplyId, replyId } = useSuggestion();
+function CommentOrReply({ commentOrReply, setCurrentId, commentId }) {
+  const { setReplyId, replyId, setCommentId } = useSuggestion();
 
   function handleWhosReplying(id) {
     if (replyId === id) {
       setReplyId(null);
       setCurrentId(0);
-    } else {
-      setReplyId(id);
-      setCurrentId(id);
+      return;
     }
+    setReplyId(id);
+    setCurrentId(id);
+    setCommentId(commentId);
   }
 
   const { content, user, id } = commentOrReply;
@@ -50,7 +51,6 @@ const StyledCommentorReply = styled.div`
   display: flex;
   gap: 3.2rem;
   margin-top: 2.8rem;
-  /* padding-bottom: 3.2rem; */
 
   & > img {
     border-radius: 10000px;

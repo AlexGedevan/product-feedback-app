@@ -13,7 +13,11 @@ function Comment({ comment }) {
   return (
     <CommentAndReply>
       <StyledComment>
-        <CommentOrReply commentOrReply={comment} setCurrentId={setCurrentId} />
+        <CommentOrReply
+          commentOrReply={comment}
+          commentId={comment.id}
+          setCurrentId={setCurrentId}
+        />
       </StyledComment>
       {comment.replies && (
         <Reply>
@@ -21,6 +25,7 @@ function Comment({ comment }) {
             return (
               <CommentOrReply
                 commentOrReply={reply}
+                commentId={comment.id}
                 key={index}
                 setCurrentId={setCurrentId}
               />

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function AddComent({ id }) {
   const { suggestions, setSuggestions, currentUser } = useSuggestion();
-  const [commentText, setCommentText] = useState();
+  const [commentText, setCommentText] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +15,6 @@ function AddComent({ id }) {
       content: commentText,
       user: { ...currentUser },
     };
-    console.log(newComment);
     const currentSuggestion = suggestions.findIndex(
       (suggestion) => Number(suggestion.id) === Number(id)
     );
@@ -28,6 +27,7 @@ function AddComent({ id }) {
         comments,
       };
       setSuggestions([...suggestions]);
+      setCommentText("");
       return;
     }
 
