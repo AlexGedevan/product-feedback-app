@@ -1,13 +1,35 @@
 import styled from "styled-components";
 import Button from "./Button";
+import { useSuggestion } from "../context/SuggestionContext";
+import { useState } from "react";
 
 function AddReply({ alreadyreplied }) {
+  const { suggestions, setSuggestions } = useSuggestion();
+  const [replyText, setReplyText] = useState();
+  const { replyId } = useSuggestion();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const suggestion = suggestions.find(
+      (suggestion) => suggestion?.comments?.id == replyId
+    );
+    console.log(suggestion);
+
+    // const newReply = {
+    //   id: crypto.randomUUID(),
+    //   content: replyText,
+    // };
+  }
+
   return (
-    <StyledAddReply alreadyreplied={alreadyreplied}>
+    <StyledAddReply alreadyreplied={alreadyreplied} onSubmit={handleSubmit}>
       <ReplyInput
         type="text"
         alreadyreplied={alreadyreplied}
         placeholder="Type your reply here"
+        onChange={(e) => setReplyText(e.target.value)}
+        value={replyText}
       />
       <Button width="11.7rem">Post Reply</Button>
     </StyledAddReply>
@@ -16,7 +38,7 @@ function AddReply({ alreadyreplied }) {
 
 export default AddReply;
 
-const StyledAddReply = styled.div`
+const StyledAddReply = styled.form`
   margin-left: ${(props) => (props.alreadyreplied ? "11.7rem" : "7.2rem")};
   display: flex;
   justify-content: space-between;
