@@ -33,13 +33,16 @@ function AddReply({ alreadyreplied }) {
       id: crypto.randomUUID(),
       content: replyText,
       replyingTo:
-        "replies" in suggestions[suggestionIndex]?.comments[commentIndex]
-          ? suggestions[suggestionIndex]?.comments[commentIndex].replies[
+        replyIndex !== -1 &&
+        "replies" in suggestions[suggestionIndex].comments[commentIndex]
+          ? suggestions[suggestionIndex]?.comments[commentIndex]?.replies[
               replyIndex
             ]?.user.username
           : suggestions[suggestionIndex].comments[commentIndex].user.username,
       user: { ...currentUser },
     };
+
+    console.log(newReply);
 
     console.log(newReply);
     if (!("replies" in suggestions[suggestionIndex].comments[commentIndex])) {

@@ -70,6 +70,7 @@ const CommentContent = styled.div`
     font-weight: 400;
     line-height: 2.168rem;
     color: #647196;
+    word-break: break-word;
   }
 `;
 
