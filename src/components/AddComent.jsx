@@ -45,11 +45,11 @@ function AddComent({ id }) {
       <CommentInput
         type="text"
         placeholder="Type your comment here"
-        onChange={(e) => setCommentText(e.target.value)}
+        onChange={(e) => setCommentText(e.target.value.slice(0, 250))}
         value={commentText}
       />
       <SubmitComment>
-        <p>250 Characters left</p>
+        <p>{250 - commentText.length} Characters left</p>
         <Button>Post Comment</Button>
       </SubmitComment>
     </StyledAddComment>

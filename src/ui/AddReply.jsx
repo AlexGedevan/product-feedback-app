@@ -12,8 +12,6 @@ function AddReply({ alreadyreplied }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(commentId);
-    console.log(replyId);
 
     const suggestionIndex = suggestions.findIndex(
       (item) => item.id === Number(id)
@@ -22,12 +20,10 @@ function AddReply({ alreadyreplied }) {
     const commentIndex = suggestions[suggestionIndex].comments.findIndex(
       (com) => com.id === commentId
     );
-    console.log(commentIndex);
+
     const replyIndex = suggestions[suggestionIndex].comments[
       commentIndex
     ].replies?.findIndex((rep) => rep.id === replyId);
-    console.log(replyIndex);
-    console.log(suggestions[suggestionIndex].comments[commentIndex].replies);
 
     const newReply = {
       id: crypto.randomUUID(),
@@ -42,9 +38,6 @@ function AddReply({ alreadyreplied }) {
       user: { ...currentUser },
     };
 
-    console.log(newReply);
-
-    console.log(newReply);
     if (!("replies" in suggestions[suggestionIndex].comments[commentIndex])) {
       let replies = [];
       replies.push(newReply);
