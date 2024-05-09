@@ -32,6 +32,7 @@ function CreateFeedback() {
             etc.
           </p>
         </FeedbackDescription>
+        <FeedbackInput />
       </CreateFeedbackForm>
     </StyledCreateFeedback>
   );
@@ -146,5 +147,7 @@ const FeedbackDescription = styled.div`
     color: #647196;
   }
 `;
+
+const FeedbackInput = styled.input``;
 
 export default CreateFeedback;
