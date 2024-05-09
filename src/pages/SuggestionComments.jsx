@@ -12,7 +12,7 @@ function SuggestionComments() {
   const { id } = useParams();
   const { suggestions } = useSuggestion();
   const singleSuggestion = suggestions.find(
-    (suggestion) => Number(suggestion.id) === Number(id)
+    (suggestion) => String(suggestion.id) === String(id)
   );
 
   const { setCurrentSuggestion, currentSuggestion } = useSuggestion();
