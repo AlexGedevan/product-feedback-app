@@ -16,7 +16,7 @@ function AddComent({ id }) {
       user: { ...currentUser },
     };
     const currentSuggestion = suggestions.findIndex(
-      (suggestion) => Number(suggestion.id) === Number(id)
+      (suggestion) => String(suggestion.id) === String(id)
     );
 
     if (!suggestions[currentSuggestion].comments) {

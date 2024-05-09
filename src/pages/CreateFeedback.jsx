@@ -13,10 +13,12 @@ function CreateFeedback() {
   const [checked, setChecked] = useState("Feature");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const { setSuggestions } = useSuggestion();
+  const { setSuggestions, suggestions } = useSuggestion();
   const navigate = useNavigate();
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
+
     const newItem = {
       id: crypto.randomUUID(),
       title,
@@ -26,6 +28,7 @@ function CreateFeedback() {
       description,
     };
     setSuggestions((suggestions) => [...suggestions, newItem]);
+    // console.log(suggestions);
     navigate("/");
   }
 

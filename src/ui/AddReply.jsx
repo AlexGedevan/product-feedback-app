@@ -14,7 +14,7 @@ function AddReply({ alreadyreplied }) {
     e.preventDefault();
 
     const suggestionIndex = suggestions.findIndex(
-      (item) => item.id === Number(id)
+      (item) => String(item.id) === String(id)
     );
 
     const commentIndex = suggestions[suggestionIndex].comments.findIndex(
