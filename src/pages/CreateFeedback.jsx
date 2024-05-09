@@ -13,11 +13,23 @@ function CreateFeedback() {
   const [checked, setChecked] = useState("Feature");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const { setSuggestions, suggestions } = useSuggestion();
+  const [error, setError] = useState("");
+  const { setSuggestions } = useSuggestion();
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!description && !title) {
+      setError("all");
+      return;
+    } else if (!title) {
+      setError("title");
+      return;
+    } else if (!description) {
+      setError("description");
+      return;
+    }
 
     const newItem = {
       id: crypto.randomUUID(),
@@ -28,7 +40,6 @@ function CreateFeedback() {
       description,
     };
     setSuggestions((suggestions) => [...suggestions, newItem]);
-    // console.log(suggestions);
     navigate("/");
   }
 
@@ -43,6 +54,9 @@ function CreateFeedback() {
             <p>Add a short, descriptive headline</p>
           </FeedbackTitleHeadline>
           <input onChange={(e) => setTitle(e.target.value)} />
+          {(error === "all" || error === "title") && (
+            <Error>Can't be empty</Error>
+          )}
         </FeedbackTitle>
         <FeedbackCategory>
           <h2>Category</h2>
@@ -116,7 +130,9 @@ function CreateFeedback() {
         </FeedbackDescription>
         <FeedbackContent>
           <FeedbackInput onChange={(e) => setDescription(e.target.value)} />
-          <p>Can't be empty</p>
+          {(error === "all" || error === "description") && (
+            <Error>Can't be empty</Error>
+          )}
         </FeedbackContent>
         <ButtonsDiv>
           <Button bgcolor="#656EA3">Cancel</Button>
@@ -305,15 +321,15 @@ const ButtonsDiv = styled.div`
   gap: 1.6rem;
 `;
 
-const FeedbackContent = styled.div`
-  & > p {
-    margin-top: 4px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20.23px;
-    text-align: left;
-    color: #d73737;
-  }
+const FeedbackContent = styled.div``;
+
+const Error = styled.p`
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.23px;
+  text-align: left;
+  color: #d73737;
 `;
 
 export default CreateFeedback;

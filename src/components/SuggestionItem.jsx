@@ -1,32 +1,56 @@
 import styled from "styled-components";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
+import arrowUpWhite from "/assets/shared/icon-white-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSuggestion } from "../context/SuggestionContext";
+import { useState } from "react";
 
 function SuggestionItem({ suggestion }) {
+  const [isUpVoted, setIsUpVoted] = useState(false);
   const { upvotes, title, description, category, comments, id } = suggestion;
+  const { suggestions, setSuggestions, render, setRender } = useSuggestion();
+
+  const navigate = useNavigate();
 
   const commentsCount = comments ? comments.length : 0;
+
+  function handleUpVote(e) {
+    e.stopPropagation();
+    if (!isUpVoted) {
+      const readIndex = suggestions.findIndex((sug) => sug.id === id);
+      suggestions[readIndex].upvotes += 1;
+      setSuggestions([...suggestions]);
+    } else {
+      const readIndex = suggestions.findIndex((sug) => sug.id === id);
+      suggestions[readIndex].upvotes -= 1;
+      setSuggestions([...suggestions]);
+    }
+    setRender(!render);
+    setIsUpVoted(!isUpVoted);
+  }
   return (
-    <Link to={`/${id}/comments/`}>
-      <StyledSuggestionsItem>
-        <VoteAndContent>
-          <Upvote>
+    <StyledSuggestionsItem onClick={() => navigate(`${id}/comments`)}>
+      <VoteAndContent>
+        <Upvote onClick={handleUpVote} isupvoted={isUpVoted.toString()}>
+          {!isUpVoted ? (
             <img src={arrowUp} alt="arrow-up-icon" />
-            <span>{upvotes}</span>
-          </Upvote>
-          <SuggestionContent>
-            <Title>{title}</Title>
-            <Text>{description}</Text>
-            <Category>{category}</Category>
-          </SuggestionContent>
-        </VoteAndContent>
-        <SuggestionComments length={commentsCount}>
-          <img src={commentIcon} alt="comment-icon" />
-          <span>{commentsCount}</span>
-        </SuggestionComments>
-      </StyledSuggestionsItem>
-    </Link>
+          ) : (
+            <img src={arrowUpWhite} alt="arrow-up-icon" />
+          )}
+          <span>{upvotes}</span>
+        </Upvote>
+        <SuggestionContent>
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+          <Category>{category}</Category>
+        </SuggestionContent>
+      </VoteAndContent>
+      <SuggestionComments length={commentsCount}>
+        <img src={commentIcon} alt="comment-icon" />
+        <span>{commentsCount}</span>
+      </SuggestionComments>
+    </StyledSuggestionsItem>
   );
 }
 
@@ -59,23 +83,26 @@ const Upvote = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
-  background-color: #f2f4fe;
+  background-color: ${(props) =>
+    props.isupvoted === "true" ? "#4661E6" : "#f2f4fe"};
   padding: 1.4rem 0.9rem 0.8rem 0.9rem;
   border-radius: 10px;
   height: 5.3rem;
   align-self: flex-start;
   transition: all 0.3s;
+  width: 4rem;
 
   & > span {
     font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.879rem;
     letter-spacing: -0.1805555522441864px;
-    color: #3a4374;
+    color: ${(props) => (props.isupvoted === "true" ? "#fff" : "#3a4374")};
   }
 
   &:hover {
-    background: #cfd7ff;
+    background-color: ${(props) =>
+      props.isupvoted === "false" ? "#cfd7ff" : ""};
     cursor: pointer;
   }
 `;
