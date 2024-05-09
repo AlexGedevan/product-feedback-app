@@ -12,7 +12,7 @@ function SuggestionsHeader() {
   const [filter, setFilter] = useState("Most Upvotes");
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const { setSuggestions } = useSuggestion();
-
+  const { render } = useSuggestion();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function SuggestionsHeader() {
       default:
         return;
     }
-  }, [filter, setSuggestions]);
+  }, [filter, setSuggestions, render]);
 
   return (
     <StyledSuggestionsHeader>

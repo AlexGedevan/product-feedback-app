@@ -7,7 +7,7 @@ function Suggestions() {
 
   return (
     <SuggestionsList>
-      {suggestions.map((suggestion) => {
+      {suggestions?.map((suggestion) => {
         return <SuggestionItem key={suggestion.id} suggestion={suggestion} />;
       })}
     </SuggestionsList>

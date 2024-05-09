@@ -9,6 +9,7 @@ function SuggestionContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(data.currentUser);
   const [replyId, setReplyId] = useState(null);
   const [commentId, setCommentId] = useState(null);
+  const [render, setRender] = useState(false);
   return (
     <SuggestionContext.Provider
       value={{
@@ -22,6 +23,8 @@ function SuggestionContextProvider({ children }) {
         setCurrentUser,
         commentId,
         setCommentId,
+        render,
+        setRender,
       }}
     >
       {children}
