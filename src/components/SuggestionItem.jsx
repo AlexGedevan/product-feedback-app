@@ -2,35 +2,51 @@ import styled from "styled-components";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import arrowUpWhite from "/assets/shared/icon-white-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
 
 function SuggestionItem({ suggestion }) {
-  const [isUpVoted, setIsUpVoted] = useState(false);
+  const { id: paramsId } = useParams();
+  console.log(paramsId);
   const { upvotes, title, description, category, comments, id } = suggestion;
-  const { suggestions, setSuggestions, render, setRender } = useSuggestion();
+  const {
+    suggestions,
+    setSuggestions,
+    render,
+    setRender,
+    upvotedList,
+    setUpvotedList,
+  } = useSuggestion();
+  const isUpVoted = upvotedList.includes(String(id));
 
   const navigate = useNavigate();
 
   const commentsCount = comments ? comments.length : 0;
 
+  function handleNavigate() {
+    if (paramsId) return;
+    navigate(`${id}/comments`);
+  }
+
   function handleUpVote(e) {
     e.stopPropagation();
-    if (!isUpVoted) {
+    if (!upvotedList.includes(String(id))) {
+      setUpvotedList((list) => [...list, String(id)]);
       const readIndex = suggestions.findIndex((sug) => sug.id === id);
       suggestions[readIndex].upvotes += 1;
       setSuggestions([...suggestions]);
     } else {
+      setUpvotedList((list) => list.filter((item) => item !== String(id)));
       const readIndex = suggestions.findIndex((sug) => sug.id === id);
       suggestions[readIndex].upvotes -= 1;
       setSuggestions([...suggestions]);
     }
     setRender(!render);
-    setIsUpVoted(!isUpVoted);
+    // setIsUpVoted(!isUpVoted);
   }
   return (
-    <StyledSuggestionsItem onClick={() => navigate(`${id}/comments`)}>
+    <StyledSuggestionsItem onClick={handleNavigate}>
       <VoteAndContent>
         <Upvote onClick={handleUpVote} isupvoted={isUpVoted.toString()}>
           {!isUpVoted ? (
