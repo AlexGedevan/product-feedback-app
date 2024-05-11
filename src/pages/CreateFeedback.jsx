@@ -72,12 +72,12 @@ function CreateFeedback() {
             etc.
           </p>
         </FeedbackDescription>
-        <FeedbackContent>
+        <FeedbackDescriptionContent>
           <FeedbackInput onChange={(e) => setDescription(e.target.value)} />
           {(error === "all" || error === "description") && (
             <Error>Can't be empty</Error>
           )}
-        </FeedbackContent>
+        </FeedbackDescriptionContent>
         <ButtonsDiv>
           <Button bgcolor="#656EA3">Cancel</Button>
           <Button bgcolor="#C75AF6">Add Feedback</Button>
@@ -190,7 +190,7 @@ const ButtonsDiv = styled.div`
   gap: 1.6rem;
 `;
 
-const FeedbackContent = styled.div``;
+const FeedbackDescriptionContent = styled.div``;
 
 const Error = styled.p`
   margin-top: 4px;

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../ui/Button";
 import { useSuggestion } from "../context/SuggestionContext";
@@ -16,6 +16,7 @@ function SuggestionComments() {
   );
 
   const { setCurrentSuggestion, currentSuggestion } = useSuggestion();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentSuggestion(singleSuggestion);
@@ -25,7 +26,12 @@ function SuggestionComments() {
     <StyledSuggestionComments>
       <SuggestionCommentsHeader>
         <GoBackComponent />
-        <Button bgcolor="#4661E6">Edit Feedback</Button>
+        <Button
+          bgcolor="#4661E6"
+          onClick={() => navigate(`/${id}/editFeedback`)}
+        >
+          Edit Feedback
+        </Button>
       </SuggestionCommentsHeader>
       <SuggestionItem suggestion={currentSuggestion} />
       <CommentsList currentSuggestion={currentSuggestion} />
