@@ -159,15 +159,15 @@ function EditFeedback() {
           </FeedbackDescriptionContent>
         </FeedbackDescription>
         <ButtonsDiv>
-          <Button bgcolor="#D73737" onClick={handleDelete}>
-            Delete
-          </Button>
           <ButtonsRightDiv>
+            <Button bgcolor="#AD1FEA">Edit Feedback</Button>
             <Button bgcolor="#656EA3" onClick={handleCancel}>
               Cancel
             </Button>
-            <Button bgcolor="#AD1FEA">Edit Feedback</Button>
           </ButtonsRightDiv>
+          <Button bgcolor="#D73737" onClick={handleDelete}>
+            Delete
+          </Button>
         </ButtonsDiv>
       </EditFeedbackForm>
     </StyledEditFeedback>
@@ -350,12 +350,14 @@ const FeedbackStatus = styled.div`
 
 const ButtonsRightDiv = styled.div`
   display: flex;
+  flex-direction: row-reverse;
   gap: 1.6rem;
 `;
 
 const ButtonsDiv = styled.div`
   margin-top: 3.2rem;
   display: flex;
+  flex-direction: row-reverse;
   gap: 11rem;
 `;
 
