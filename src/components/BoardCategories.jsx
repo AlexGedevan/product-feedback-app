@@ -1,19 +1,70 @@
+import { useEffect } from "react";
 import styled from "styled-components";
+import { useSuggestion } from "../context/SuggestionContext";
 
 function BoardCategories() {
+  const {
+    suggestions,
+    setSuggestionsByCategory,
+    activeCategory,
+    setActiveCategory,
+  } = useSuggestion();
+
+  useEffect(() => {
+    if (activeCategory === "all") {
+      setSuggestionsByCategory([...suggestions]);
+    } else {
+      const filteredSuggestions = suggestions.filter(
+        (suggestion) => suggestion.category === activeCategory
+      );
+
+      setSuggestionsByCategory(filteredSuggestions);
+    }
+  }, [activeCategory, suggestions, setSuggestionsByCategory]);
+
   return (
     <StyledBoardCategories>
       <div className="first-row">
-        <p className="active">All</p>
-        <p>UI</p>
-        <p>UX</p>
+        <p
+          className={activeCategory === "all" ? "active" : ""}
+          onClick={() => setActiveCategory("all")}
+        >
+          All
+        </p>
+        <p
+          className={activeCategory === "ui" ? "active" : ""}
+          onClick={() => setActiveCategory("ui")}
+        >
+          UI
+        </p>
+        <p
+          className={activeCategory === "ux" ? "active" : ""}
+          onClick={() => setActiveCategory("ux")}
+        >
+          UX
+        </p>
       </div>
       <div className="second-row">
-        <p>Enhancement</p>
-        <p>Bug</p>
+        <p
+          className={activeCategory === "enhancement" ? "active" : ""}
+          onClick={() => setActiveCategory("enhancement")}
+        >
+          Enhancement
+        </p>
+        <p
+          className={activeCategory === "bug" ? "active" : ""}
+          onClick={() => setActiveCategory("bug")}
+        >
+          Bug
+        </p>
       </div>
       <div className="third-row">
-        <p>Feature</p>
+        <p
+          className={activeCategory === "feature" ? "active" : ""}
+          onClick={() => setActiveCategory("feature")}
+        >
+          Feature
+        </p>
       </div>
     </StyledBoardCategories>
   );
@@ -38,6 +89,12 @@ const StyledBoardCategories = styled.div`
       border-radius: 1rem;
       background-color: #f2f4ff;
       color: #4661e6;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    & > p:hover {
+      background-color: #cfd7ff;
     }
     & > .active {
       background-color: #4661e6;

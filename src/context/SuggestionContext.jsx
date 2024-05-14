@@ -11,6 +11,9 @@ function SuggestionContextProvider({ children }) {
   const [commentId, setCommentId] = useState(null);
   const [render, setRender] = useState(false);
   const [upvotedList, setUpvotedList] = useState([]);
+  const [suggestionsByCategory, setSuggestionsByCategory] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("all");
+
   return (
     <SuggestionContext.Provider
       value={{
@@ -28,6 +31,10 @@ function SuggestionContextProvider({ children }) {
         setRender,
         upvotedList,
         setUpvotedList,
+        suggestionsByCategory,
+        setSuggestionsByCategory,
+        activeCategory,
+        setActiveCategory,
       }}
     >
       {children}

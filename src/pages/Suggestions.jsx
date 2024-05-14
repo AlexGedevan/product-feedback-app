@@ -3,11 +3,11 @@ import SuggestionItem from "../components/SuggestionItem";
 import { useSuggestion } from "../context/SuggestionContext";
 
 function Suggestions() {
-  const { suggestions } = useSuggestion();
+  const { suggestionsByCategory } = useSuggestion();
 
   return (
     <SuggestionsList>
-      {suggestions?.map((suggestion) => {
+      {suggestionsByCategory?.map((suggestion) => {
         return <SuggestionItem key={suggestion.id} suggestion={suggestion} />;
       })}
     </SuggestionsList>
