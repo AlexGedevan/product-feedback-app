@@ -49,7 +49,7 @@ function FeedbackCategory({
             </OptionDiv>
             <OptionDiv
               onClick={() => {
-                setChecked("Enchancement");
+                setChecked("Enhancement");
                 setIsSelecting(false);
               }}
             >

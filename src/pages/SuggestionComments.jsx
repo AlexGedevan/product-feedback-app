@@ -28,6 +28,7 @@ function SuggestionComments() {
         <GoBackComponent />
         <Button
           bgcolor="#4661E6"
+          hoverbgcolor="#7C91F9"
           onClick={() => navigate(`/${id}/editFeedback`)}
         >
           Edit Feedback

@@ -46,12 +46,14 @@ function SuggestionsHeader() {
     }
   }, [filter, setSuggestions, render]);
 
+  const { suggestionsByCategory } = useSuggestion();
+
   return (
     <StyledSuggestionsHeader>
       <FilterSuggestions>
         <SuggestionsQuantity>
           <img src={iconSuggestions} alt="icon suggestions" />
-          <p>6 Suggestions</p>
+          <p>{suggestionsByCategory.length} Suggestions</p>
         </SuggestionsQuantity>
         <SortBy onClick={() => setIsOptionsOpen(!isOptionsOpen)}>
           <p>

@@ -50,7 +50,7 @@ function EditFeedback() {
       title: newTitle,
       description,
       status: statusChecked,
-      category: categoryChecked,
+      category: categoryChecked.toLocaleLowerCase(),
     };
     const suggestionIndex = suggestions.findIndex(
       (sugg) => String(sugg.id) === String(id)
@@ -78,9 +78,6 @@ function EditFeedback() {
             onChange={(e) => setNewTitle(e.target.value)}
             value={newTitle}
           />
-          {/* {(error === "all" || error === "title") && (
-            <Error>Can't be empty</Error>
-          )} */}
         </FeedbackTitle>
         <FeedbackCategory
           checked={categoryChecked}
@@ -114,12 +111,22 @@ function EditFeedback() {
         />
         <ButtonsDiv>
           <ButtonsRightDiv>
-            <Button bgcolor="#AD1FEA">Edit Feedback</Button>
-            <Button bgcolor="#656EA3" onClick={handleCancel}>
+            <Button bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
+              Edit Feedback
+            </Button>
+            <Button
+              bgcolor="#3A4374"
+              hoverbgcolor="#656EA3"
+              onClick={handleCancel}
+            >
               Cancel
             </Button>
           </ButtonsRightDiv>
-          <Button bgcolor="#D73737" onClick={handleDelete}>
+          <Button
+            bgcolor="#D73737"
+            hoverbgcolor="#E98888"
+            onClick={handleDelete}
+          >
             Delete
           </Button>
         </ButtonsDiv>

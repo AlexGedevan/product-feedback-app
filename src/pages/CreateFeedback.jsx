@@ -35,7 +35,7 @@ function CreateFeedback() {
     const newItem = {
       id: crypto.randomUUID(),
       title,
-      category: checked,
+      category: checked.toLowerCase(),
       upvotes: 0,
       status: "suggestion",
       description,
@@ -80,8 +80,12 @@ function CreateFeedback() {
           )}
         </FeedbackDescriptionContent>
         <ButtonsDiv>
-          <Button bgcolor="#656EA3">Cancel</Button>
-          <Button bgcolor="#C75AF6">Add Feedback</Button>
+          <Button bgcolor="#3A4374" hoverbgcolor="#656EA3">
+            Cancel
+          </Button>
+          <Button bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
+            Add Feedback
+          </Button>
         </ButtonsDiv>
       </CreateFeedbackForm>
     </StyledCreateFeedback>
