@@ -4,11 +4,9 @@ import arrowUpWhite from "/assets/shared/icon-white-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSuggestion } from "../context/SuggestionContext";
-import { useState } from "react";
 
 function SuggestionItem({ suggestion }) {
   const { id: paramsId } = useParams();
-  console.log(paramsId);
   const { upvotes, title, description, category, comments, id } = suggestion;
   const {
     suggestions,
@@ -135,6 +133,7 @@ const Title = styled.h2`
   line-height: 2.601rem;
   letter-spacing: -0.25px;
   color: #3a4374;
+  word-break: break-all;
 `;
 
 const Text = styled.p`
@@ -143,6 +142,7 @@ const Text = styled.p`
   line-height: 2.312rem;
   color: #647196;
   margin-top: 0.4rem;
+  word-break: break-all;
 `;
 
 const Category = styled.p`

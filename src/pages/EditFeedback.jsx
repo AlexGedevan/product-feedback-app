@@ -4,12 +4,14 @@ import { useSuggestion } from "../context/SuggestionContext";
 import GoBackComponent from "../ui/GoBackComponent";
 import { useState } from "react";
 import FeedbackCategory from "../components/FeedbackCategory";
+import DesignMark from "../ui/DesignMark";
+import StatusSelector from "../components/StatusSelector";
+import FeedbackDescription from "../components/FeedbackDescription";
+import Button from "../ui/Button";
 
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import arrowDown from "/assets/shared/icon-arrow-down.svg";
-import Button from "../ui/Button";
-import StatusSelector from "../components/StatusSelector";
-import FeedbackDescription from "../components/FeedbackDescription";
+import editFeedbackIcon from "/assets/shared/icon-edit-feedback.svg";
 function EditFeedback() {
   const { id } = useParams();
   const { suggestions, setSuggestions } = useSuggestion();
@@ -65,6 +67,7 @@ function EditFeedback() {
     <StyledEditFeedback>
       <GoBackComponent />
       <EditFeedbackForm onSubmit={handleSubmit}>
+        <DesignMark image={editFeedbackIcon} />
         <h1>{`Editing '${title}'`}</h1>
         <FeedbackTitle>
           <FeedbackTitleHeadline>
@@ -137,6 +140,7 @@ const EditFeedbackForm = styled.form`
     line-height: 34.68px;
     letter-spacing: -0.3333333432674408px;
     color: #3a4374;
+    margin-top: 2.4rem;
   }
   margin-top: 6.8rem;
   padding: 5.2rem 4.2rem 0 4.2rem;

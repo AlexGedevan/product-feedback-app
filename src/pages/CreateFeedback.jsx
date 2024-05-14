@@ -3,6 +3,7 @@ import GoBackComponent from "../ui/GoBackComponent";
 import Button from "../ui/Button";
 import DesignMark from "../ui/DesignMark";
 import FeedbackCategory from "../components/FeedbackCategory";
+import newFeedback from "/assets/shared/icon-new-feedback.svg";
 
 import { useState } from "react";
 import { useSuggestion } from "../context/SuggestionContext";
@@ -47,7 +48,7 @@ function CreateFeedback() {
     <StyledCreateFeedback>
       <GoBackComponent />
       <CreateFeedbackForm onSubmit={handleSubmit}>
-        <DesignMark />
+        <DesignMark image={newFeedback} />
         <h1>Create New Feedback</h1>
         <FeedbackTitle>
           <FeedbackTitleHeadline>
