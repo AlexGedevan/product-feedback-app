@@ -4,7 +4,8 @@ import data from "../../data.json";
 const SuggestionContext = createContext();
 
 function SuggestionContextProvider({ children }) {
-  const [suggestions, setSuggestions] = useState(
+  const [suggestions, setSuggestions] = useState(data.productRequests);
+  const [onlyStatusSuggestion, setOnlyStatusSuggestion] = useState(
     data.productRequests.filter((sug) => sug.status === "suggestion")
   );
   const [roadmapList, setRoadmapList] = useState(
@@ -42,6 +43,8 @@ function SuggestionContextProvider({ children }) {
         setActiveCategory,
         roadmapList,
         setRoadmapList,
+        onlyStatusSuggestion,
+        setOnlyStatusSuggestion,
       }}
     >
       {children}

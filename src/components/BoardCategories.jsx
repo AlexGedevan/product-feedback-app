@@ -4,7 +4,7 @@ import { useSuggestion } from "../context/SuggestionContext";
 
 function BoardCategories() {
   const {
-    suggestions,
+    onlyStatusSuggestion,
     setSuggestionsByCategory,
     activeCategory,
     setActiveCategory,
@@ -12,15 +12,15 @@ function BoardCategories() {
 
   useEffect(() => {
     if (activeCategory === "all") {
-      setSuggestionsByCategory([...suggestions]);
+      setSuggestionsByCategory([...onlyStatusSuggestion]);
     } else {
-      const filteredSuggestions = suggestions.filter(
+      const filteredSuggestions = onlyStatusSuggestion.filter(
         (suggestion) => suggestion.category === activeCategory
       );
 
       setSuggestionsByCategory(filteredSuggestions);
     }
-  }, [activeCategory, suggestions, setSuggestionsByCategory]);
+  }, [activeCategory, onlyStatusSuggestion, setSuggestionsByCategory]);
 
   return (
     <StyledBoardCategories>

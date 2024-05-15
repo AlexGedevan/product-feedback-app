@@ -11,31 +11,31 @@ import { useNavigate } from "react-router-dom";
 function SuggestionsHeader() {
   const [filter, setFilter] = useState("Most Upvotes");
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const { setSuggestions } = useSuggestion();
+  const { setOnlyStatusSuggestion } = useSuggestion();
   const { render } = useSuggestion();
   const navigate = useNavigate();
 
   useEffect(() => {
     switch (filter) {
       case "Most Upvotes":
-        setSuggestions((prevSuggestions) =>
+        setOnlyStatusSuggestion((prevSuggestions) =>
           [...prevSuggestions].sort((a, b) => b.upvotes - a.upvotes)
         );
         return;
       case "Least Upvotes":
-        setSuggestions((prevSuggestions) =>
+        setOnlyStatusSuggestion((prevSuggestions) =>
           [...prevSuggestions].sort((a, b) => a.upvotes - b.upvotes)
         );
         return;
       case "Most Comments":
-        setSuggestions((prevSuggestions) =>
+        setOnlyStatusSuggestion((prevSuggestions) =>
           [...prevSuggestions].sort(
             (a, b) => (b.comments?.length || 0) - (a.comments?.length || 0)
           )
         );
         return;
       case "Least Comments":
-        setSuggestions((prevSuggestions) =>
+        setOnlyStatusSuggestion((prevSuggestions) =>
           [...prevSuggestions].sort(
             (a, b) => (a.comments?.length || 0) - (b.comments?.length || 0)
           )
@@ -44,7 +44,7 @@ function SuggestionsHeader() {
       default:
         return;
     }
-  }, [filter, setSuggestions, render]);
+  }, [filter, setOnlyStatusSuggestion, render]);
 
   const { suggestionsByCategory } = useSuggestion();
 
