@@ -24,7 +24,7 @@ function EditFeedback() {
   const [isSelectingCategory, setIsSelectingCategory] = useState(false);
   const [isSelectingStatus, setIsSelectingStatus] = useState(false);
   const [statusChecked, setStatusChecked] = useState("Planned");
-  const [description, setDescription] = useState("");
+  const [editDescription, setEditDescription] = useState("");
   const navigate = useNavigate();
 
   function handleCancel() {
@@ -33,7 +33,7 @@ function EditFeedback() {
     setIsSelectingCategory(false);
     setStatusChecked("Planned");
     setIsSelectingStatus(false);
-    setDescription("");
+    setEditDescription("");
   }
 
   function handleDelete() {
@@ -44,17 +44,19 @@ function EditFeedback() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!newTitle || !description) return;
-
-    const currentSuggestion = {
-      title: newTitle,
-      description,
-      status: statusChecked,
-      category: categoryChecked.toLocaleLowerCase(),
-    };
     const suggestionIndex = suggestions.findIndex(
       (sugg) => String(sugg.id) === String(id)
     );
+
+    const currentSuggestion = {
+      title: newTitle !== "" ? newTitle : suggestions[suggestionIndex].title,
+      description:
+        editDescription !== ""
+          ? editDescription
+          : suggestions[suggestionIndex].description,
+      status: statusChecked,
+      category: categoryChecked.toLocaleLowerCase(),
+    };
     suggestions[suggestionIndex] = {
       ...suggestions[suggestionIndex],
       ...currentSuggestion,
@@ -106,8 +108,8 @@ function EditFeedback() {
         </FeedbackStatus>
 
         <FeedbackDescription
-          description={description}
-          setDescription={setDescription}
+          description={editDescription}
+          setDescription={setEditDescription}
         />
         <ButtonsDiv>
           <ButtonsRightDiv>
