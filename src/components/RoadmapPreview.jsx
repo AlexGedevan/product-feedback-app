@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Roadmap() {
+  const navigate = useNavigate();
   return (
     <StyledRoadMap>
       <RoadmapView>
         <h2>Roadmap</h2>
-        <p>View</p>
+        <p onClick={() => navigate("/roadmap")}>View</p>
       </RoadmapView>
       <Rows>
         <Row>
@@ -61,6 +63,7 @@ const RoadmapView = styled.div`
     line-height: 1.879rem;
     color: #4661e6;
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import FrontendMentor from "../components/FrontendMentor";
 import BoardCategories from "../components/BoardCategories";
-import Roadmap from "../components/Roadmap";
+import RoadmapPreview from "../components/RoadmapPreview";
 
 function FeedbackBoard() {
   return (
     <StyledFeedbackBoard>
       <FrontendMentor />
       <BoardCategories />
-      <Roadmap />
+      <RoadmapPreview />
     </StyledFeedbackBoard>
   );
 }

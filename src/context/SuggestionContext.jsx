@@ -4,7 +4,12 @@ import data from "../../data.json";
 const SuggestionContext = createContext();
 
 function SuggestionContextProvider({ children }) {
-  const [suggestions, setSuggestions] = useState(data.productRequests);
+  const [suggestions, setSuggestions] = useState(
+    data.productRequests.filter((sug) => sug.status === "suggestion")
+  );
+  const [roadmapList, setRoadmapList] = useState(
+    data.productRequests.filter((sug) => sug.status !== "suggestion")
+  );
   const [currentSuggestion, setCurrentSuggestion] = useState([]);
   const [currentUser, setCurrentUser] = useState(data.currentUser);
   const [replyId, setReplyId] = useState(null);
@@ -35,6 +40,8 @@ function SuggestionContextProvider({ children }) {
         setSuggestionsByCategory,
         activeCategory,
         setActiveCategory,
+        roadmapList,
+        setRoadmapList,
       }}
     >
       {children}

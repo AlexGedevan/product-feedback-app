@@ -25,6 +25,8 @@ function EditFeedback() {
   const [isSelectingStatus, setIsSelectingStatus] = useState(false);
   const [statusChecked, setStatusChecked] = useState("Planned");
   const [editDescription, setEditDescription] = useState("");
+  const [error, setError] = useState(false);
+
   const navigate = useNavigate();
 
   function handleCancel() {
@@ -47,6 +49,17 @@ function EditFeedback() {
     const suggestionIndex = suggestions.findIndex(
       (sugg) => String(sugg.id) === String(id)
     );
+    if (
+      !newTitle &&
+      !editDescription &&
+      categoryChecked.toLocaleLowerCase() ===
+        suggestions[suggestionIndex].category.toLocaleLowerCase() &&
+      statusChecked.toLocaleLowerCase() ===
+        suggestions[suggestionIndex].status.toLocaleLowerCase()
+    ) {
+      setError(true);
+      return;
+    }
 
     const currentSuggestion = {
       title: newTitle !== "" ? newTitle : suggestions[suggestionIndex].title,
@@ -74,12 +87,14 @@ function EditFeedback() {
         <FeedbackTitle>
           <FeedbackTitleHeadline>
             <h2>Feedback Title</h2>
+
             <p>Add a short, descriptive headline</p>
           </FeedbackTitleHeadline>
           <input
             onChange={(e) => setNewTitle(e.target.value)}
             value={newTitle}
           />
+          {error && <Error>Can't be empty</Error>}
         </FeedbackTitle>
         <FeedbackCategory
           checked={categoryChecked}
@@ -111,6 +126,7 @@ function EditFeedback() {
           description={editDescription}
           setDescription={setEditDescription}
         />
+        {error && <Error>Can't be empty</Error>}
         <ButtonsDiv>
           <ButtonsRightDiv>
             <Button bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
@@ -259,6 +275,15 @@ const ButtonsDiv = styled.div`
   display: flex;
   flex-direction: row-reverse;
   gap: 11rem;
+`;
+
+const Error = styled.p`
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20.23px;
+  text-align: left;
+  color: #d73737;
 `;
 
 export default EditFeedback;
