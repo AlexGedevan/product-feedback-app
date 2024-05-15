@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
+import { useNavigate } from "react-router-dom";
 function RoadmapItem({ item, list, status, color }) {
+  const navigate = useNavigate();
+
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  console.log(color);
 
   return (
-    <StyledRoadmapItem color={color}>
+    <StyledRoadmapItem
+      color={color}
+      onClick={() => navigate(`/${item.id}/comments`)}
+    >
       <ItemStatus>
         <Circle color={color}></Circle>
         <h2>{capitalizeFirstLetter(item.status)}</h2>
@@ -41,6 +46,7 @@ const StyledRoadmapItem = styled.div`
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: white;
+  cursor: pointer;
 `;
 
 const ItemStatus = styled.div`

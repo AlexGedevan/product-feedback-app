@@ -22,6 +22,7 @@ const StyledRoadmapHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 1rem;
 `;
 
 const RoadmapTitle = styled.div`
