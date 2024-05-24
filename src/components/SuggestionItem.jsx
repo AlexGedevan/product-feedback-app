@@ -46,6 +46,13 @@ function SuggestionItem({ suggestion }) {
   return (
     <StyledSuggestionsItem onClick={handleNavigate}>
       <VoteAndContent>
+        {/* desktopze amas unda flex-reverse  */}
+        <SuggestionContent>
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+          <Category>{category}</Category>
+        </SuggestionContent>
+
         <Upvote onClick={handleUpVote} isupvoted={isUpVoted.toString()}>
           {!isUpVoted ? (
             <img src={arrowUp} alt="arrow-up-icon" />
@@ -54,11 +61,6 @@ function SuggestionItem({ suggestion }) {
           )}
           <span>{upvotes}</span>
         </Upvote>
-        <SuggestionContent>
-          <Title>{title}</Title>
-          <Text>{description}</Text>
-          <Category>{category}</Category>
-        </SuggestionContent>
       </VoteAndContent>
       <SuggestionComments length={commentsCount}>
         <img src={commentIcon} alt="comment-icon" />
@@ -71,7 +73,8 @@ function SuggestionItem({ suggestion }) {
 export default SuggestionItem;
 
 const StyledSuggestionsItem = styled.div`
-  padding: 2.8rem 3.2rem;
+  /* padding: 2.8rem 3.2rem; */
+  padding: 2.4rem;
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -89,22 +92,29 @@ const StyledSuggestionsItem = styled.div`
 
 const VoteAndContent = styled.div`
   display: flex;
-  gap: 4rem;
+  flex-direction: column;
+  /* gap: 4rem; */
+  gap: 0.9rem;
 `;
 
 const Upvote = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  justify-content: center;
   align-items: center;
   gap: 0.8rem;
   background-color: ${(props) =>
     props.isupvoted === "true" ? "#4661E6" : "#f2f4fe"};
-  padding: 1.4rem 0.9rem 0.8rem 0.9rem;
+  /* padding: 1.4rem 0.9rem 0.8rem 0.9rem; */
+  padding-top: 0.6rem;
+  padding-bottom: 0.7rem;
   border-radius: 10px;
-  height: 5.3rem;
+  /* width: 4rem;
+  height: 5.3rem; */
+  width: 6.9rem;
+  height: 3.2rem;
   align-self: flex-start;
   transition: all 0.3s;
-  width: 4rem;
 
   & > span {
     font-size: 1.3rem;
@@ -128,18 +138,26 @@ const SuggestionContent = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.8rem;
+  /* font-size: 1.8rem;
   font-weight: 700;
   line-height: 2.601rem;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.25px; */
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 18.79px;
+  letter-spacing: -0.1805555522441864px;
+  text-align: left;
+
   color: #3a4374;
   word-break: break-all;
 `;
 
 const Text = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem;
   font-weight: 400;
-  line-height: 2.312rem;
+  line-height: 2.312rem; */
+  font-size: 1.3rem;
+  line-height: 1.879rem;
   color: #647196;
   margin-top: 0.4rem;
   word-break: break-all;
@@ -160,6 +178,7 @@ const SuggestionComments = styled.div`
   display: flex;
   gap: 0.8rem;
   align-items: center;
+  align-self: flex-end;
 
   & > span {
     font-size: 1.6rem;

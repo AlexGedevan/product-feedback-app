@@ -20,4 +20,6 @@ const SuggestionsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
 `;
