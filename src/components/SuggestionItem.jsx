@@ -46,7 +46,6 @@ function SuggestionItem({ suggestion }) {
   return (
     <StyledSuggestionsItem onClick={handleNavigate}>
       <VoteAndContent>
-        {/* desktopze amas unda flex-reverse  */}
         <SuggestionContent>
           <Title>{title}</Title>
           <Text>{description}</Text>
@@ -95,22 +94,25 @@ const VoteAndContent = styled.div`
   flex-direction: column;
   /* gap: 4rem; */
   gap: 0.9rem;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    gap: 4rem;
+  }
 `;
 
 const Upvote = styled.div`
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   gap: 0.8rem;
   background-color: ${(props) =>
     props.isupvoted === "true" ? "#4661E6" : "#f2f4fe"};
-  /* padding: 1.4rem 0.9rem 0.8rem 0.9rem; */
+
   padding-top: 0.6rem;
   padding-bottom: 0.7rem;
   border-radius: 10px;
-  /* width: 4rem;
-  height: 5.3rem; */
+
   width: 6.9rem;
   height: 3.2rem;
   align-self: flex-start;
@@ -128,6 +130,13 @@ const Upvote = styled.div`
     background-color: ${(props) =>
       props.isupvoted === "false" ? "#cfd7ff" : ""};
     cursor: pointer;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 4rem;
+    height: 5.3rem;
+    padding: 1.4rem 0.9rem 0.8rem 0.9rem;
+    flex-direction: column;
   }
 `;
 
@@ -150,17 +159,26 @@ const Title = styled.h2`
 
   color: #3a4374;
   word-break: break-all;
+
+  @media screen and (min-width: 768px) {
+    color: #3a4374;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
 `;
 
 const Text = styled.p`
-  /* font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 2.312rem; */
   font-size: 1.3rem;
   line-height: 1.879rem;
   color: #647196;
   margin-top: 0.4rem;
   word-break: break-all;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.312rem;
+  }
 `;
 
 const Category = styled.p`
@@ -187,5 +205,9 @@ const SuggestionComments = styled.div`
     letter-spacing: -0.2222222238779068px;
     color: #3a4374;
     opacity: ${(props) => props.length === 0 && "50%"};
+  }
+
+  @media screen and (min-width: 768px) {
+    align-self: center;
   }
 `;

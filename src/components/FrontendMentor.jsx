@@ -76,4 +76,33 @@ const StyledFrontendMentor = styled.div`
     width: 2rem;
     height: 1.7rem;
   }
+
+  @media screen and (min-width: 768px) {
+    padding: 10.3rem 4.5rem 2.4rem 2.4rem;
+    border-radius: 1rem;
+
+    width: auto;
+
+    & > div {
+      & > h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: normal;
+        color: #ffffff;
+      }
+
+      & > p {
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        color: #ffffff;
+        opacity: 75%;
+      }
+    }
+
+    & > img {
+      display: none;
+    }
+  }
 `;

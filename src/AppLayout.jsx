@@ -25,18 +25,18 @@ export default AppLayout;
 const StyledAppLayout = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* gap: 3rem;  */
   max-height: ${(props) => props.ismenuopen === "true" && "100vh"};
   overflow: ${(props) => props.ismenuopen === "true" && "hidden"};
   & > main {
-    width: 100%;
-    max-width: 50rem;
+    /* max-width: 50rem; */
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
   }
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
+    width: 68.9rem;
   }
 `;

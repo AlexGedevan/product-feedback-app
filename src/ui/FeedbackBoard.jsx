@@ -31,6 +31,9 @@ const StyledFeedbackBoard = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
     & > div:nth-child(2) {
       display: flex;
     }

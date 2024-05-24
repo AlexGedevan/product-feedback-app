@@ -32,6 +32,10 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${(props) => props.hoverbgcolor};
   }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export default MobileButton;
