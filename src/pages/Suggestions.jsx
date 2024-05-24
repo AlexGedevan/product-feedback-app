@@ -25,4 +25,12 @@ const SuggestionsList = styled.div`
   gap: 2rem;
   padding-left: 2.4rem;
   padding-right: 2.4rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 0;
+  }
 `;

@@ -42,4 +42,10 @@ const StyledFeedbackBoard = styled.div`
       display: block;
     }
   }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: column;
+    justify-content: start;
+    gap: 2.4rem;
+  }
 `;

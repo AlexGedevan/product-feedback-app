@@ -37,6 +37,16 @@ const StyledAppLayout = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 68.9rem;
+    & > main {
+      width: 68.9rem;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 3rem;
+    & > main {
+      width: 82.5rem;
+    }
   }
 `;

@@ -46,6 +46,10 @@ const StyledRoadMap = styled.div`
   @media screen and (min-width: 768px) {
     width: 22.3rem;
   }
+
+  @media screen and (min-width: 1440px) {
+    width: 25.5rem;
+  }
 `;
 
 const RoadmapView = styled.div`

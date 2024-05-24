@@ -72,7 +72,6 @@ function SuggestionItem({ suggestion }) {
 export default SuggestionItem;
 
 const StyledSuggestionsItem = styled.div`
-  /* padding: 2.8rem 3.2rem; */
   padding: 2.4rem;
   background-color: #ffffff;
   display: flex;
@@ -86,6 +85,10 @@ const StyledSuggestionsItem = styled.div`
     & h2 {
       color: #4661e6;
     }
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 2.8rem 3.2rem;
   }
 `;
 

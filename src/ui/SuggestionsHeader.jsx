@@ -150,6 +150,10 @@ const StyledSuggestionsHeader = styled.div`
     border-radius: 1rem;
     margin-top: 4rem;
   }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 0;
+  }
 `;
 
 const FilterSuggestions = styled.div`

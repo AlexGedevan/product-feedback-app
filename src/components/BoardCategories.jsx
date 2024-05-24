@@ -112,4 +112,8 @@ const StyledBoardCategories = styled.div`
   @media screen and (min-width: 768px) {
     padding: 2.4rem 1.8rem 3.6rem 2.4rem;
   }
+
+  @media screen and (min-width: 1440px) {
+    padding: 2.4rem 5rem 2.4rem 2.4rem;
+  }
 `;

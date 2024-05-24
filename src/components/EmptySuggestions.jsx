@@ -35,6 +35,10 @@ const StyledEmptySuggestions = styled.div`
     letter-spacing: -0.25px;
     margin-top: 3.9rem;
   }
+
+  @media screen and (min-width: 768px) {
+    padding: 11rem 13.9rem;
+  }
 `;
 
 const Text = styled.p`

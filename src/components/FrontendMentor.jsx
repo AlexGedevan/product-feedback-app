@@ -105,4 +105,8 @@ const StyledFrontendMentor = styled.div`
       display: none;
     }
   }
+
+  @media screen and (min-width: 1440px) {
+    padding: 6.2rem 7.7rem 2.4rem 2.4rem;
+  }
 `;
