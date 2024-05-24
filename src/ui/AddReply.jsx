@@ -3,6 +3,7 @@ import Button from "./Button";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import MobileButton from "./MobileButton";
 
 function AddReply({ alreadyreplied }) {
   const { suggestions, setSuggestions } = useSuggestion();
@@ -68,6 +69,7 @@ function AddReply({ alreadyreplied }) {
         value={replyText}
       />
       <Button width="11.7rem">Post Reply</Button>
+      {/* <MobileButton width="2.7rem">Post Reply</MobileButton> */}
     </StyledAddReply>
   );
 }
@@ -75,8 +77,11 @@ function AddReply({ alreadyreplied }) {
 export default AddReply;
 
 const StyledAddReply = styled.form`
-  margin-left: ${(props) => (props.alreadyreplied ? "11.7rem" : "7.2rem")};
+  /* margin-left: ${(props) =>
+    props.alreadyreplied ? "11.7rem" : "7.2rem"}; */
+  margin-left: ${(props) => (props.alreadyreplied ? "4rem" : "3rem")};
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 1.6rem;
@@ -89,7 +94,8 @@ const StyledAddReply = styled.form`
 
 const ReplyInput = styled.input`
   padding: 1.6rem 0rem 4.2rem 2.4rem;
-  width: ${(props) => (props.alreadyreplied ? "75%" : "77%")};
+  /* width: ${(props) => (props.alreadyreplied ? "75%" : "77%")}; */
+  width: 100%;
   border: none;
   outline: none;
   border-radius: 0.5rem;

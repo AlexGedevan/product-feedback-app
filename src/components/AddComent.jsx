@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Button from "../ui/Button";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
+import MobileButton from "../ui/MobileButton";
 
 function AddComent({ id }) {
   const { suggestions, setSuggestions, currentUser } = useSuggestion();
@@ -51,6 +52,7 @@ function AddComent({ id }) {
       <SubmitComment>
         <p>{250 - commentText.length} Characters left</p>
         <Button>Post Comment</Button>
+        <MobileButton>Post Comment</MobileButton>
       </SubmitComment>
     </StyledAddComment>
   );
