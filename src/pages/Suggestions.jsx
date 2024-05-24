@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SuggestionItem from "../components/SuggestionItem";
 import { useSuggestion } from "../context/SuggestionContext";
+import EmptySuggestions from "../components/EmptySuggestions";
 
 function Suggestions() {
   const { suggestionsByCategory } = useSuggestion();
@@ -10,6 +11,8 @@ function Suggestions() {
       {suggestionsByCategory?.map((suggestion) => {
         return <SuggestionItem key={suggestion.id} suggestion={suggestion} />;
       })}
+
+      {suggestionsByCategory.length === 0 && <EmptySuggestions />}
     </SuggestionsList>
   );
 }

@@ -1,14 +1,30 @@
 import styled from "styled-components";
 import hambergermenuImg from "/assets/shared/mobile/icon-hamburger.svg";
+import closeMenu from "/assets/shared/mobile/icon-close.svg";
+import { useSuggestion } from "../context/SuggestionContext";
 
 function FrontendMentor() {
+  const { setIsMenuOpen, isMenuOpen } = useSuggestion();
+
   return (
     <StyledFrontendMentor>
       <div>
         <h2>Frontend Mentor</h2>
         <p>Feedback Board</p>
       </div>
-      <img src={hambergermenuImg} alt="hamburger-menu" />
+      {isMenuOpen ? (
+        <img
+          src={closeMenu}
+          alt="close-menu"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      ) : (
+        <img
+          src={hambergermenuImg}
+          alt="hamburger-menu"
+          onClick={() => setIsMenuOpen(true)}
+        />
+      )}
     </StyledFrontendMentor>
   );
 }

@@ -29,4 +29,14 @@ const StyledFeedbackBoard = styled.div`
   & > div:nth-child(3) {
     display: none;
   }
+
+  @media screen and (min-width: 768px) {
+    & > div:nth-child(2) {
+      display: flex;
+    }
+
+    & > div:nth-child(3) {
+      display: block;
+    }
+  }
 `;

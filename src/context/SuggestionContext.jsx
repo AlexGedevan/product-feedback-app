@@ -19,6 +19,7 @@ function SuggestionContextProvider({ children }) {
   const [upvotedList, setUpvotedList] = useState([]);
   const [suggestionsByCategory, setSuggestionsByCategory] = useState([]);
   const [activeCategory, setActiveCategory] = useState("all");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <SuggestionContext.Provider
@@ -45,6 +46,8 @@ function SuggestionContextProvider({ children }) {
         setRoadmapList,
         onlyStatusSuggestion,
         setOnlyStatusSuggestion,
+        isMenuOpen,
+        setIsMenuOpen,
       }}
     >
       {children}
