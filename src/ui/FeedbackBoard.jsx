@@ -16,8 +16,17 @@ function FeedbackBoard() {
 export default FeedbackBoard;
 
 const StyledFeedbackBoard = styled.div`
-  width: 25.5rem;
+  /* width: 25.5rem; */
+
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+
+  & > div:nth-child(2) {
+    display: none;
+  }
+
+  & > div:nth-child(3) {
+    display: none;
+  }
 `;

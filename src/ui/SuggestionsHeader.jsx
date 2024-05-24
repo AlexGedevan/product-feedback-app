@@ -7,6 +7,7 @@ import Button from "./Button";
 import { useEffect, useState } from "react";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useNavigate } from "react-router-dom";
+import MobileButton from "./MobileButton";
 
 function SuggestionsHeader() {
   const [filter, setFilter] = useState("Most Upvotes");
@@ -74,6 +75,13 @@ function SuggestionsHeader() {
       >
         + Add Feedback
       </Button>
+      <MobileButton
+        bgcolor="#AD1FEA"
+        hoverbgcolor="#C75AF6"
+        onClick={() => navigate("/createFeedback")}
+      >
+        + Add Feedback
+      </MobileButton>
 
       {isOptionsOpen && (
         <FilterOptions>
@@ -130,16 +138,17 @@ function SuggestionsHeader() {
 export default SuggestionsHeader;
 
 const StyledSuggestionsHeader = styled.div`
-  position: relative;
   width: 100%;
   background-color: #373f68;
-  border-radius: 10px;
-  padding: 1.4rem 1.6rem 1.4rem 2.4rem;
+  /* border-radius: 10px; */
+  /* padding: 1.4rem 1.6rem 1.4rem 2.4rem; */
+  padding: 0.8rem 2.4rem;
   display: flex;
   justify-content: space-between;
 `;
 
 const FilterSuggestions = styled.div`
+  /* position: relative; */
   display: flex;
   align-items: center;
   gap: 3.8rem;
@@ -149,6 +158,7 @@ const SuggestionsQuantity = styled.div`
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  display: none;
 
   & > p {
     font-size: 1.8rem;
@@ -160,6 +170,7 @@ const SuggestionsQuantity = styled.div`
 `;
 
 const SortBy = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -185,8 +196,8 @@ const FilterOptions = styled.div`
   width: 25.5rem;
   background: #fff;
   position: absolute;
-  top: 8.8rem;
-  left: 19.6rem;
+  top: 12.8rem;
+  /* left: 19.6rem; */
   box-shadow: 0 10px 40px -7px rgba(55, 63, 104, 0.35);
   border-radius: 1rem;
   overflow: hidden;
