@@ -8,7 +8,6 @@ import DesignMark from "../ui/DesignMark";
 import StatusSelector from "../components/StatusSelector";
 import FeedbackDescription from "../components/FeedbackDescription";
 import Button from "../ui/Button";
-
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import arrowDown from "/assets/shared/icon-arrow-down.svg";
 import editFeedbackIcon from "/assets/shared/icon-edit-feedback.svg";

@@ -10,7 +10,7 @@ function CommentsList() {
 
   return (
     <StyledCommentsList>
-      <h2>{currentSuggestion.comments?.length || 0} Comments</h2>
+      <h2>{currentSuggestion?.comments?.length || 0} Comments</h2>
       {currentSuggestion.comments?.map((comment) => {
         return <Comment key={comment.id} comment={comment} />;
       })}

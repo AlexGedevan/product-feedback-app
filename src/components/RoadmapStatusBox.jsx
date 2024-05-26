@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import RoadmapItem from "./RoadmapItem";
+import RoadmapStatus from "./RoadmapStatus";
 
 function RoadmapStatusBox({ status, description, list, color }) {
   const ItemsTotal = list.filter(
     (item) => item.status === status.toLowerCase()
   ).length;
+
   return (
     <StyledRoadmapStatusBox>
       <BoxTitle>
-        <h2>
-          {status} ({ItemsTotal})
-        </h2>
+        <RoadmapStatus status={status} ItemsTotal={ItemsTotal} />
         <p>{description}</p>
       </BoxTitle>
       <RoadmapBoxContent>
@@ -34,20 +34,19 @@ const BoxTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  & > h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 2.601rem;
-    letter-spacing: -0.25px;
-    color: #3a4374;
-  }
+  display: none;
+  margin-bottom: 3.2rem;
+
   & > p {
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.312rem;
     color: #647196;
   }
-  margin-bottom: 3.2rem;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 const RoadmapBoxContent = styled.div`
