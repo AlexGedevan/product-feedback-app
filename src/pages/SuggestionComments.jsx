@@ -39,7 +39,6 @@ function SuggestionComments() {
           hoverbgcolor="#7C91F9"
           onClick={() => navigate(`/${id}/editFeedback`)}
         >
-          {" "}
           Edit Feedback
         </MobileButton>
       </SuggestionCommentsHeader>
@@ -67,13 +66,14 @@ const StyledSuggestionComments = styled.div`
     width: 69.8rem;
     max-width: 110rem;
     margin: 0;
+    padding: 0;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 100%;
     width: 73rem;
     max-width: 73rem;
     margin: 0;
+    padding: 0;
   }
 `;
 

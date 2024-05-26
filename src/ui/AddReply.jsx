@@ -3,7 +3,6 @@ import Button from "./Button";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import MobileButton from "./MobileButton";
 
 function AddReply({ alreadyreplied }) {
   const { suggestions, setSuggestions } = useSuggestion();
@@ -69,7 +68,6 @@ function AddReply({ alreadyreplied }) {
         value={replyText}
       />
       <Button width="11.7rem">Post Reply</Button>
-      {/* <MobileButton width="2.7rem">Post Reply</MobileButton> */}
     </StyledAddReply>
   );
 }
@@ -90,6 +88,11 @@ const StyledAddReply = styled.form`
   & > button {
     align-self: flex-start;
   }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    margin-left: ${(props) => (props.alreadyreplied ? "11.7rem" : "7.2rem")};
+  }
 `;
 
 const ReplyInput = styled.input`
@@ -109,5 +112,9 @@ const ReplyInput = styled.input`
 
   &:focus {
     outline: 1px solid #4661e6;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: ${(props) => (props.alreadyreplied ? "75%" : "77%")};
   }
 `;
