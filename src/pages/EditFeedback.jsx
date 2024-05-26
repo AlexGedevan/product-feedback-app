@@ -195,6 +195,10 @@ const StyledEditFeedback = styled.div`
   width: 32.7rem;
   width: 100%;
   max-width: 40rem;
+  @media screen and (min-width: 768px) {
+    width: 54rem;
+    max-width: none;
+  }
 `;
 
 const EditFeedbackForm = styled.form`
@@ -219,6 +223,21 @@ const EditFeedbackForm = styled.form`
   padding: 4.4rem 2.4rem 2.4rem 2.4rem;
   /* padding: 5.2rem 4.2rem 0 4.2rem; */
   background-color: white;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 6.8rem;
+    padding: 4.4rem 4.2rem 4rem 4.2rem;
+
+    & > h1 {
+      font-family: Jost;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34.68px;
+      letter-spacing: -0.3333333432674408px;
+      color: #3a4374;
+      margin-top: 2.4rem;
+    }
+  }
 `;
 
 const FeedbackTitle = styled.div`
@@ -319,6 +338,9 @@ const ButtonsRightDiv = styled.div`
   /* flex-direction: row-reverse; */
   flex-direction: column;
   gap: 1.6rem;
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 const ButtonsDiv = styled.div`
@@ -328,6 +350,10 @@ const ButtonsDiv = styled.div`
   flex-direction: column;
   gap: 1.6rem;
   /* gap: 11rem; */
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
 `;
 
 const Error = styled.p`
