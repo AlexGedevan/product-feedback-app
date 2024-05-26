@@ -42,6 +42,14 @@ const StyledRoadMap = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 1.9rem 2.4rem 2.4rem 2.4rem;
+
+  @media screen and (min-width: 768px) {
+    width: 22.3rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 25.5rem;
+  }
 `;
 
 const RoadmapView = styled.div`

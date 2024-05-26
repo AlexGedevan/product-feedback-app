@@ -15,7 +15,13 @@ function RoadmapStatusBox({ status, description, list, color }) {
       </BoxTitle>
       <RoadmapBoxContent>
         {list.map((item) => (
-          <RoadmapItem item={item} list={list} status={status} color={color} />
+          <RoadmapItem
+            item={item}
+            list={list}
+            status={status}
+            color={color}
+            key={item.id}
+          />
         ))}
       </RoadmapBoxContent>
     </StyledRoadmapStatusBox>

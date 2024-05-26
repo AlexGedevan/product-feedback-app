@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Button({
+function MobileButton({
   children,
   bgcolor = "#AD1FEA",
   hoverbgcolor = "#C75AF6",
@@ -17,27 +17,25 @@ function Button({
   );
 }
 
-export default Button;
-
 const StyledButton = styled.button`
-  padding: 1.25rem 2.5rem 1.15rem 2.4rem;
+  padding: 1.05rem 1.7rem 1.05rem 1.6rem;
   background-color: ${(props) => props.bgcolor};
   border-radius: 10px;
   color: #f2f4fe;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  line-height: 2.023rem;
-  font-family: inherit;
-  cursor: pointer;
+  line-height: 1.879rem;
   transition: all 0.3s;
-  display: none;
+  font-family: inherit;
 
   &:hover {
     background-color: ${(props) => props.hoverbgcolor};
   }
 
   @media screen and (min-width: 768px) {
-    display: block;
+    display: none;
   }
 `;
+
+export default MobileButton;

@@ -7,6 +7,7 @@ import Button from "./Button";
 import { useEffect, useState } from "react";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useNavigate } from "react-router-dom";
+import MobileButton from "./MobileButton";
 
 function SuggestionsHeader() {
   const [filter, setFilter] = useState("Most Upvotes");
@@ -74,6 +75,13 @@ function SuggestionsHeader() {
       >
         + Add Feedback
       </Button>
+      <MobileButton
+        bgcolor="#AD1FEA"
+        hoverbgcolor="#C75AF6"
+        onClick={() => navigate("/createFeedback")}
+      >
+        + Add Feedback
+      </MobileButton>
 
       {isOptionsOpen && (
         <FilterOptions>
@@ -133,13 +141,23 @@ const StyledSuggestionsHeader = styled.div`
   position: relative;
   width: 100%;
   background-color: #373f68;
-  border-radius: 10px;
-  padding: 1.4rem 1.6rem 1.4rem 2.4rem;
+  padding: 0.8rem 2.4rem;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    padding: 1.4rem 1.2rem 1.4rem 2.4rem;
+    border-radius: 1rem;
+    margin-top: 4rem;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 0;
+  }
 `;
 
 const FilterSuggestions = styled.div`
+  /* position: relative; */
   display: flex;
   align-items: center;
   gap: 3.8rem;
@@ -149,6 +167,7 @@ const SuggestionsQuantity = styled.div`
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  display: none;
 
   & > p {
     font-size: 1.8rem;
@@ -157,9 +176,14 @@ const SuggestionsQuantity = styled.div`
     letter-spacing: -0.25px;
     color: #ffffff;
   }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 const SortBy = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -185,8 +209,8 @@ const FilterOptions = styled.div`
   width: 25.5rem;
   background: #fff;
   position: absolute;
-  top: 8.8rem;
-  left: 19.6rem;
+  top: 6.8rem;
+  left: 3rem;
   box-shadow: 0 10px 40px -7px rgba(55, 63, 104, 0.35);
   border-radius: 1rem;
   overflow: hidden;
@@ -197,6 +221,11 @@ const FilterOptions = styled.div`
     justify-content: space-between;
     padding: 1.2rem 2.4rem;
     border-bottom: 1px solid #3a437434;
+  }
+
+  @media screen and (min-width: 768px) {
+    top: 8.8rem;
+    left: 22rem;
   }
 `;
 

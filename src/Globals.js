@@ -19,8 +19,13 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #F7F8FD;
     display: flex;
     justify-content: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    /* padding-top: 3rem;
+    padding-bottom: 3rem; */
+
+    @media screen and (min-width: 768px) {
+      padding-top: 5.6rem;
+      padding-bottom: 11.3rem;
+    }
   }
   a{
     text-decoration: none;
