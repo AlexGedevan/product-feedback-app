@@ -12,6 +12,7 @@ import Button from "../ui/Button";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import arrowDown from "/assets/shared/icon-arrow-down.svg";
 import editFeedbackIcon from "/assets/shared/icon-edit-feedback.svg";
+import MobileButton from "../ui/MobileButton";
 function EditFeedback() {
   const { id } = useParams();
   const {
@@ -148,6 +149,10 @@ function EditFeedback() {
             <Button bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
               Edit Feedback
             </Button>
+
+            <MobileButton bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
+              Edit Feedback
+            </MobileButton>
             <Button
               bgcolor="#3A4374"
               hoverbgcolor="#656EA3"
@@ -155,6 +160,14 @@ function EditFeedback() {
             >
               Cancel
             </Button>
+
+            <MobileButton
+              bgcolor="#3A4374"
+              hoverbgcolor="#656EA3"
+              onClick={handleCancel}
+            >
+              Cancel
+            </MobileButton>
           </ButtonsRightDiv>
           <Button
             bgcolor="#D73737"
@@ -163,6 +176,14 @@ function EditFeedback() {
           >
             Delete
           </Button>
+
+          <MobileButton
+            bgcolor="#D73737"
+            hoverbgcolor="#E98888"
+            onClick={handleDelete}
+          >
+            Delete
+          </MobileButton>
         </ButtonsDiv>
       </EditFeedbackForm>
     </StyledEditFeedback>
