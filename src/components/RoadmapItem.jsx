@@ -47,6 +47,11 @@ const StyledRoadmapItem = styled.div`
   border-top-right-radius: 5px;
   background-color: white;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    padding: 2.6rem 2rem 2.4rem 2rem;
+    width: 22.3rem;
+  }
 `;
 
 const ItemStatus = styled.div`
