@@ -14,7 +14,12 @@ import arrowDown from "/assets/shared/icon-arrow-down.svg";
 import editFeedbackIcon from "/assets/shared/icon-edit-feedback.svg";
 function EditFeedback() {
   const { id } = useParams();
-  const { suggestions, setSuggestions } = useSuggestion();
+  const {
+    suggestions,
+    setSuggestions,
+    onlyStatusSuggestion,
+    setOnlyStatusSuggestion,
+  } = useSuggestion();
   const { title } = suggestions.find(
     (suggestion) => String(suggestion.id) === String(id)
   );
@@ -40,6 +45,9 @@ function EditFeedback() {
 
   function handleDelete() {
     setSuggestions(suggestions.filter((sug) => String(sug.id) !== String(id)));
+    setOnlyStatusSuggestion(
+      onlyStatusSuggestion.filter((sug) => String(sug.id) !== String(id))
+    );
     navigate("/");
   }
 
@@ -47,6 +55,9 @@ function EditFeedback() {
     e.preventDefault();
 
     const suggestionIndex = suggestions.findIndex(
+      (sugg) => String(sugg.id) === String(id)
+    );
+    const onlyStatusSuggestionIndex = onlyStatusSuggestion.findIndex(
       (sugg) => String(sugg.id) === String(id)
     );
     if (
@@ -74,7 +85,12 @@ function EditFeedback() {
       ...suggestions[suggestionIndex],
       ...currentSuggestion,
     };
+    onlyStatusSuggestion[onlyStatusSuggestionIndex] = {
+      ...onlyStatusSuggestion[onlyStatusSuggestionIndex],
+      ...currentSuggestion,
+    };
     setSuggestions([...suggestions]);
+    setOnlyStatusSuggestion([...onlyStatusSuggestion]);
     navigate("/");
   }
 
@@ -154,27 +170,40 @@ function EditFeedback() {
 }
 
 const StyledEditFeedback = styled.div`
-  width: 54rem;
+  /* width: 54rem; */
+  width: 32.7rem;
+  width: 100%;
+  max-width: 40rem;
 `;
 
 const EditFeedbackForm = styled.form`
   & > h1 {
-    font-family: Jost;
+    /* font-family: Jost;
     font-size: 24px;
     font-weight: 700;
     line-height: 34.68px;
     letter-spacing: -0.3333333432674408px;
     color: #3a4374;
+    margin-top: 2.4rem; */
+
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.601rem;
+    letter-spacing: -0.25px;
+    color: #3a4374;
     margin-top: 2.4rem;
   }
-  margin-top: 6.8rem;
-  padding: 5.2rem 4.2rem 0 4.2rem;
+  /* margin-top: 6.8rem; */
+  margin-top: 5.5rem;
+  padding: 4.4rem 2.4rem 2.4rem 2.4rem;
+  /* padding: 5.2rem 4.2rem 0 4.2rem; */
   background-color: white;
 `;
 
 const FeedbackTitle = styled.div`
   margin-bottom: 2.4rem;
-  margin-top: 7.5rem;
+  /* margin-top: 7.5rem; */
+  margin-top: 2.4rem;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -215,7 +244,7 @@ const FeedbackTitleHeadline = styled.div`
 `;
 
 const ChoosenStatus = styled.div`
-  margin-top: 1.6rem;
+  margin-top: 2.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -266,15 +295,18 @@ const FeedbackStatus = styled.div`
 
 const ButtonsRightDiv = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
+  flex-direction: column;
   gap: 1.6rem;
 `;
 
 const ButtonsDiv = styled.div`
   margin-top: 3.2rem;
   display: flex;
-  flex-direction: row-reverse;
-  gap: 11rem;
+  /* flex-direction: row-reverse; */
+  flex-direction: column;
+  gap: 1.6rem;
+  /* gap: 11rem; */
 `;
 
 const Error = styled.p`

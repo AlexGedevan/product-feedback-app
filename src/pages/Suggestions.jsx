@@ -3,8 +3,8 @@ import SuggestionItem from "../components/SuggestionItem";
 import { useSuggestion } from "../context/SuggestionContext";
 
 function Suggestions() {
-  const { suggestionsByCategory } = useSuggestion();
-
+  const { suggestionsByCategory, suggestions } = useSuggestion();
+  console.log(suggestionsByCategory);
   return (
     <SuggestionsList>
       {suggestionsByCategory?.map((suggestion) => {
