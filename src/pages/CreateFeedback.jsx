@@ -15,7 +15,7 @@ function CreateFeedback() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
-  const { setSuggestions } = useSuggestion();
+  const { setSuggestions, setOnlyStatusSuggestion } = useSuggestion();
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -41,6 +41,7 @@ function CreateFeedback() {
       description,
     };
     setSuggestions((suggestions) => [...suggestions, newItem]);
+    setOnlyStatusSuggestion((suggestions) => [...suggestions, newItem]);
     navigate("/");
   }
 
@@ -93,28 +94,60 @@ function CreateFeedback() {
 }
 
 const StyledCreateFeedback = styled.div`
-  width: 54rem;
+  /* width: 54rem; */
+  width: 100%;
+  max-width: 50rem;
+  /* padding: 3.4rem 2.4rem 2.4rem 2.4rem; */
+  @media screen and (min-width: 768px) {
+    width: 54rem;
+    max-width: none;
+  }
+  @media screen and (min-width: 1440px) {
+    /* margin-top: 6.2rem; */
+    width: 54rem;
+  }
 `;
 
 const CreateFeedbackForm = styled.form`
   background-color: #ffffff;
-  margin-top: 6.8rem;
-  padding: 5.2rem 4.2rem 4rem;
+  /* margin-top: 6.8rem; */
+  margin-top: 5.5rem;
+  /* padding: 5.2rem 4.2rem 4rem; */
+  padding: 4.4rem 2.4rem 2.4rem 2.4rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
   & > h1 {
-    font-size: 2.4rem;
+    /* font-size: 2.4rem;
     font-weight: 700;
     line-height: 3.468rem;
     letter-spacing: -0.3333333432674408px;
+    color: #3a4374; */
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.601rem;
+    letter-spacing: -0.25px;
     color: #3a4374;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 6.8rem;
+
+    & > h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 3.468rem;
+      letter-spacing: -0.3333333432674408px;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 5.2rem 4.2rem 3.8rem 4.2rem;
   }
 `;
 
 const FeedbackTitle = styled.div`
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
+  /* margin-top: 2.4rem; */
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -140,34 +173,79 @@ const FeedbackTitleHeadline = styled.div`
   flex-direction: column;
   gap: 2px;
   & > h2 {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem;
     font-weight: 700;
     line-height: 2.023rem;
     letter-spacing: -0.1944444477558136px;
+    color: #3a4374; */
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.879rem;
+    letter-spacing: -0.1805555522441864px;
     color: #3a4374;
   }
   & > p {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem;
     font-weight: 400;
     line-height: 2.023rem;
+    color: #647196; */
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.879rem;
     color: #647196;
+  }
+  @media screen and (min-width: 768px) {
+    & > h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 2.023rem;
+      letter-spacing: -0.1944444477558136px;
+    }
+    & > p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2.023rem;
+    }
   }
 `;
 
 const FeedbackDescription = styled.div`
+  margin-bottom: -8px;
   & > h2 {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem;
     font-weight: 700;
     line-height: 2.023rem;
     letter-spacing: -0.1944444477558136px;
+    color: #3a4374; */
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.879rem;
+    letter-spacing: -0.1805555522441864px;
     color: #3a4374;
   }
 
   & > p {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem;
     font-weight: 400;
     line-height: 2.023rem;
+    color: #647196; */
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.879rem;
     color: #647196;
+  }
+  @media screen and (min-width: 768px) {
+    & > h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 2.023rem;
+      letter-spacing: -0.1944444477558136px;
+    }
+    & > p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2.023rem;
+    }
   }
 `;
 
@@ -189,10 +267,17 @@ const FeedbackInput = styled.input`
 `;
 
 const ButtonsDiv = styled.div`
-  margin-top: -0.8rem;
-  align-self: flex-end;
+  /* margin-top: -0.8rem; */
+  margin-top: 1.6rem;
+  /* align-self: flex-end; */
   display: flex;
+  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1.6rem;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 `;
 
 const FeedbackDescriptionContent = styled.div``;

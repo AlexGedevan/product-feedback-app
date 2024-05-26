@@ -4,8 +4,8 @@ import { useSuggestion } from "../context/SuggestionContext";
 import EmptySuggestions from "../components/EmptySuggestions";
 
 function Suggestions() {
-  const { suggestionsByCategory } = useSuggestion();
-
+  const { suggestionsByCategory, suggestions } = useSuggestion();
+  console.log(suggestionsByCategory);
   return (
     <SuggestionsList>
       {suggestionsByCategory?.map((suggestion) => {

@@ -15,6 +15,8 @@ function SuggestionItem({ suggestion }) {
     setRender,
     upvotedList,
     setUpvotedList,
+    onlyStatusSuggestion,
+    setOnlyStatusSuggestion,
   } = useSuggestion();
   const isUpVoted = upvotedList.includes(String(id));
 
@@ -32,13 +34,24 @@ function SuggestionItem({ suggestion }) {
     if (!upvotedList.includes(String(id))) {
       setUpvotedList((list) => [...list, String(id)]);
       const readIndex = suggestions.findIndex((sug) => sug.id === id);
-      suggestions[readIndex].upvotes += 1;
+      // suggestions[readIndex].upvotes += 1;
+      const onlyStatusSuggestionIndex = onlyStatusSuggestion.findIndex(
+        (sug) => sug.id === id
+      );
+      onlyStatusSuggestion[onlyStatusSuggestionIndex].upvotes += 1;
       setSuggestions([...suggestions]);
+      setOnlyStatusSuggestion([...onlyStatusSuggestion]);
     } else {
       setUpvotedList((list) => list.filter((item) => item !== String(id)));
       const readIndex = suggestions.findIndex((sug) => sug.id === id);
-      suggestions[readIndex].upvotes -= 1;
+      const onlyStatusSuggestionIndex = onlyStatusSuggestion.findIndex(
+        (sug) => sug.id === id
+      );
+      // suggestions[readIndex].upvotes -= 1;
+      onlyStatusSuggestion[onlyStatusSuggestionIndex].upvotes -= 1;
+
       setSuggestions([...suggestions]);
+      setOnlyStatusSuggestion([...onlyStatusSuggestion]);
     }
     setRender(!render);
     // setIsUpVoted(!isUpVoted);

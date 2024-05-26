@@ -78,17 +78,39 @@ export default FeedbackCategory;
 
 const StyledFeedbackCategory = styled.div`
   & > h2 {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem;
     font-weight: 700;
     line-height: 2.023rem;
     letter-spacing: -0.1944444477558136px;
+    color: #3a4374; */
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.879rem;
+    letter-spacing: -0.1805555522441864px;
     color: #3a4374;
   }
   & > p {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem;
     font-weight: 400;
     line-height: 2.023rem;
+    color: #647196; */
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.879rem;
     color: #647196;
+  }
+  @media screen and (min-width: 768px) {
+    & > h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 2.023rem;
+      letter-spacing: -0.1944444477558136px;
+    }
+    & > p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2.023rem;
+    }
   }
 `;
 

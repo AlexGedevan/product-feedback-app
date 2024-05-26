@@ -11,8 +11,8 @@ import MobileButton from "../ui/MobileButton";
 
 function SuggestionComments() {
   const { id } = useParams();
-  const { suggestions } = useSuggestion();
-  const singleSuggestion = suggestions.find(
+  const { suggestions, onlyStatusSuggestion } = useSuggestion();
+  const singleSuggestion = onlyStatusSuggestion.find(
     (suggestion) => String(suggestion.id) === String(id)
   );
 
