@@ -5,7 +5,15 @@ import { useState } from "react";
 import MobileButton from "../ui/MobileButton";
 
 function AddComent({ id }) {
-  const { suggestions, setSuggestions, currentUser } = useSuggestion();
+  const {
+    suggestions,
+    setSuggestions,
+    currentUser,
+    onlyStatusSuggestion,
+    setOnlyStatusSuggestion,
+    suggestionsByCategory,
+    setSuggestionsByCategory,
+  } = useSuggestion();
   const [commentText, setCommentText] = useState("");
 
   function handleSubmit(e) {
@@ -27,6 +35,12 @@ function AddComent({ id }) {
         ...suggestions[currentSuggestion],
         comments,
       };
+      onlyStatusSuggestion[currentSuggestion] = {
+        ...onlyStatusSuggestion[currentSuggestion],
+        comments,
+      };
+    
+      setOnlyStatusSuggestion([...onlyStatusSuggestion]);
       setSuggestions([...suggestions]);
       setCommentText("");
       return;
@@ -36,6 +50,7 @@ function AddComent({ id }) {
       ...suggestions[currentSuggestion].comments,
       newComment,
     ];
+
     setSuggestions([...suggestions]);
     setCommentText("");
   }

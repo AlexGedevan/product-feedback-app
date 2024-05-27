@@ -4,7 +4,8 @@ import { useSuggestion } from "../context/SuggestionContext";
 import EmptySuggestions from "../components/EmptySuggestions";
 
 function Suggestions() {
-  const { suggestionsByCategory, suggestions } = useSuggestion();
+  const { suggestionsByCategory, suggestions, onlyStatusSuggestion } =
+    useSuggestion();
   console.log(suggestionsByCategory);
   return (
     <SuggestionsList>

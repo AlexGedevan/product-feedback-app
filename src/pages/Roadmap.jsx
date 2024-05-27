@@ -127,6 +127,9 @@ const StyledRoadmap = styled.div`
   @media screen and (min-width: 768px) {
     width: 69.8rem;
   }
+  @media screen and (min-width: 1440px) {
+    width: 110rem;
+  }
 `;
 
 const MobileBoxTitle = styled.div`
@@ -153,7 +156,7 @@ const RoadmapContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: start;
-    gap: 1rem;
+    justify-content: space-between;
   }
 `;
 

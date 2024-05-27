@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import arrowUp from "/assets/shared/icon-arrow-up.svg";
 import commentIcon from "/assets/shared/icon-comments.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function RoadmapItem({ item, list, status, color }) {
   const navigate = useNavigate();
 
@@ -10,32 +10,34 @@ function RoadmapItem({ item, list, status, color }) {
   }
 
   return (
-    <StyledRoadmapItem
-      color={color}
-      onClick={() => navigate(`/${item.id}/comments`)}
-    >
-      <ItemStatus>
-        <Circle color={color}></Circle>
-        <h2>{capitalizeFirstLetter(item.status)}</h2>
-      </ItemStatus>
-      <ItemTitle>
-        <h2>{item.title}</h2>
-        <p>{item.description}</p>
-      </ItemTitle>
-      <ItemCategory>
-        <p>{capitalizeFirstLetter(item.category)}</p>
-      </ItemCategory>
-      <ItemUpvotesAndComments>
-        <ItemUpvotes>
-          <img src={arrowUp} alt="arrow up" />
-          <p>{item.upvotes}</p>
-        </ItemUpvotes>
-        <ItemComments>
-          <img src={commentIcon} alt="comment icon" />
-          <p>{"comments" in item ? item.comments.length : 0}</p>
-        </ItemComments>
-      </ItemUpvotesAndComments>
-    </StyledRoadmapItem>
+    <Link to={`/${item.id}/comments`}>
+      <StyledRoadmapItem
+        color={color}
+        onClick={() => navigate(`/${item.id}/comments`)}
+      >
+        <ItemStatus>
+          <Circle color={color}></Circle>
+          <h2>{capitalizeFirstLetter(item.status)}</h2>
+        </ItemStatus>
+        <ItemTitle>
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+        </ItemTitle>
+        <ItemCategory>
+          <p>{capitalizeFirstLetter(item.category)}</p>
+        </ItemCategory>
+        <ItemUpvotesAndComments>
+          <ItemUpvotes>
+            <img src={arrowUp} alt="arrow up" />
+            <p>{item.upvotes}</p>
+          </ItemUpvotes>
+          <ItemComments>
+            <img src={commentIcon} alt="comment icon" />
+            <p>{"comments" in item ? item.comments.length : 0}</p>
+          </ItemComments>
+        </ItemUpvotesAndComments>
+      </StyledRoadmapItem>
+    </Link>
   );
 }
 
@@ -51,6 +53,10 @@ const StyledRoadmapItem = styled.div`
   @media screen and (min-width: 768px) {
     padding: 2.6rem 2rem 2.4rem 2rem;
     width: 22.3rem;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 2.5rem 3.2rem 3.2rem;
+    width: 35rem;
   }
 `;
 

@@ -30,6 +30,9 @@ const StyledRoadmapHeader = styled.div`
   @media screen and (min-width: 768px) {
     border-radius: 1rem;
   }
+  @media screen and (min-width: 1440px) {
+    padding: 2.7rem 4rem 2.7rem 3.2rem;
+  }
 `;
 
 const RoadmapTitle = styled.div`
@@ -42,6 +45,14 @@ const RoadmapTitle = styled.div`
     font-weight: 700;
     line-height: 3.468rem;
     letter-spacing: -0.3333333432674408px;
+  }
+  @media screen and (min-width: 1440px) {
+    & > h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 3.468rem;
+      letter-spacing: -0.3333333432674408px;
+    }
   }
 `;
 

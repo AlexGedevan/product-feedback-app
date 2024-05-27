@@ -27,4 +27,19 @@ const StyledRoadmapStatus = styled.h2`
 
   border-bottom: ${(props) =>
     props.currentStatus === props.status ? "4px solid #ad1fea" : ""};
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2.601rem;
+    letter-spacing: -0.25px;
+    color: #3a4374;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.601rem;
+    letter-spacing: -0.25px;
+    color: #3a4374;
+  }
 `;

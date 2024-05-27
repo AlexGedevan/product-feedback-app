@@ -47,6 +47,9 @@ const BoxTitle = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
   }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+  }
 `;
 
 const RoadmapBoxContent = styled.div`

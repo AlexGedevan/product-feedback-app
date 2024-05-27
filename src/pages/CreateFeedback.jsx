@@ -8,6 +8,7 @@ import newFeedback from "/assets/shared/icon-new-feedback.svg";
 import { useState } from "react";
 import { useSuggestion } from "../context/SuggestionContext";
 import { useNavigate } from "react-router-dom";
+import MobileButton from "../ui/MobileButton";
 
 function CreateFeedback() {
   const [isSelecting, setIsSelecting] = useState(false);
@@ -81,6 +82,12 @@ function CreateFeedback() {
           )}
         </FeedbackDescriptionContent>
         <ButtonsDiv>
+          <MobileButton bgcolor="#3A4374" hoverbgcolor="#656EA3">
+            Cancel
+          </MobileButton>
+          <MobileButton bgcolor="#AD1FEA" hoverbgcolor="#C75AF6">
+            Add Feedback
+          </MobileButton>
           <Button bgcolor="#3A4374" hoverbgcolor="#656EA3">
             Cancel
           </Button>
