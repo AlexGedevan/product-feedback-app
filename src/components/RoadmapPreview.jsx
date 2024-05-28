@@ -1,8 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useSuggestion } from "../context/SuggestionContext";
 
 function Roadmap() {
   const navigate = useNavigate();
+  const { roadmapList } = useSuggestion();
+  const totalPlannedItems = roadmapList.filter(
+    (item) => item.status === "planned"
+  ).length;
+  const totalliveItems = roadmapList.filter(
+    (item) => item.status === "live"
+  ).length;
+  const totalInProgressItems = roadmapList.filter(
+    (item) => item.status === "in-progress"
+  ).length;
   return (
     <StyledRoadMap>
       <RoadmapView>
@@ -15,21 +26,21 @@ function Roadmap() {
             <Circle />
             <p>Planned</p>
           </div>
-          <span>2</span>
+          <span>{totalPlannedItems}</span>
         </Row>
         <Row>
           <div>
             <Circle />
             <p>In-Progress</p>
           </div>
-          <span>3</span>
+          <span>{totalInProgressItems}</span>
         </Row>
         <Row>
           <div>
             <Circle />
             <p>Live</p>
           </div>
-          <span>1</span>
+          <span>{totalliveItems}</span>
         </Row>
       </Rows>
     </StyledRoadMap>

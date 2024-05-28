@@ -42,6 +42,7 @@ function RoadmapItem({ item, list, status, color }) {
 }
 
 const StyledRoadmapItem = styled.div`
+  /* height: 27.2rem; */
   width: 35rem;
   padding: 2.5rem 3.2rem 3.2rem;
   border-top: 4px solid ${(props) => props.color};
@@ -55,7 +56,7 @@ const StyledRoadmapItem = styled.div`
     width: 22.3rem;
   }
   @media screen and (min-width: 1440px) {
-    padding: 2.5rem 3.2rem 3.2rem;
+    padding: 2.5rem 3.2rem 3.2rem 2.4rem;
     width: 35rem;
   }
 `;

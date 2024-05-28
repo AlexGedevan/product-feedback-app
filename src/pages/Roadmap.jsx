@@ -9,6 +9,7 @@ import { useState } from "react";
 function Roadmap() {
   const { roadmapList } = useSuggestion();
   const [currentStatus, setCurrentStatus] = useState("Planned");
+  console.log(roadmapList);
 
   const PlanedTotal = roadmapList.filter(
     (item) => "planned" === item.status
@@ -128,7 +129,7 @@ const StyledRoadmap = styled.div`
     width: 69.8rem;
   }
   @media screen and (min-width: 1440px) {
-    width: 110rem;
+    width: 111rem;
   }
 `;
 
@@ -157,6 +158,7 @@ const RoadmapContainer = styled.div`
     flex-direction: row;
     align-items: start;
     justify-content: space-between;
+    /* gap: 3rem; */
   }
 `;
 

@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useSuggestion } from "../context/SuggestionContext";
 import GoBackComponent from "../ui/GoBackComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FeedbackCategory from "../components/FeedbackCategory";
 import DesignMark from "../ui/DesignMark";
 import StatusSelector from "../components/StatusSelector";
@@ -19,6 +19,8 @@ function EditFeedback() {
     setSuggestions,
     onlyStatusSuggestion,
     setOnlyStatusSuggestion,
+    roadmapList,
+    setRoadmapList,
   } = useSuggestion();
   const { title } = suggestions.find(
     (suggestion) => String(suggestion.id) === String(id)
@@ -48,6 +50,7 @@ function EditFeedback() {
     setOnlyStatusSuggestion(
       onlyStatusSuggestion.filter((sug) => String(sug.id) !== String(id))
     );
+    setRoadmapList(roadmapList.filter((sug) => String(sug.id) !== String(id)));
     navigate("/");
   }
 
@@ -60,6 +63,10 @@ function EditFeedback() {
     const onlyStatusSuggestionIndex = onlyStatusSuggestion.findIndex(
       (sugg) => String(sugg.id) === String(id)
     );
+    const currentIndexforRoadmapList = roadmapList.findIndex(
+      (sugg) => String(sugg.id) === String(id)
+    );
+
     if (
       !newTitle &&
       !editDescription &&
@@ -78,7 +85,7 @@ function EditFeedback() {
         editDescription !== ""
           ? editDescription
           : suggestions[suggestionIndex].description,
-      status: statusChecked,
+      status: statusChecked.toLocaleLowerCase(),
       category: categoryChecked.toLocaleLowerCase(),
     };
     suggestions[suggestionIndex] = {
@@ -89,8 +96,18 @@ function EditFeedback() {
       ...onlyStatusSuggestion[onlyStatusSuggestionIndex],
       ...currentSuggestion,
     };
+    roadmapList[currentIndexforRoadmapList] = {
+      ...roadmapList[currentIndexforRoadmapList],
+      ...currentSuggestion,
+    };
     setSuggestions([...suggestions]);
-    setOnlyStatusSuggestion([...onlyStatusSuggestion]);
+    setOnlyStatusSuggestion((state) =>
+      suggestions.filter((item) => item.status === "suggestion")
+    );
+    setRoadmapList((state) =>
+      state.filter((item) => item.status !== "suggestions")
+    );
+
     navigate("/");
   }
 

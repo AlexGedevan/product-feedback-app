@@ -2,6 +2,7 @@ import styled from "styled-components";
 import GoBackComponent from "../ui/GoBackComponent";
 import Button from "../ui/Button";
 import MobileButton from "../ui/MobileButton";
+import { Link } from "react-router-dom";
 
 function RoadmapHeader() {
   return (
@@ -10,7 +11,9 @@ function RoadmapHeader() {
         <GoBackComponent color="#fff" />
         <h2>Roadmap</h2>
       </RoadmapTitle>
-      <Button>+ Add Feedback</Button>
+      <Link to="/CreateFeedback">
+        <Button>+ Add Feedback</Button>
+      </Link>
       <MobileButton>+ Add Feedback</MobileButton>
     </StyledRoadmapHeader>
   );

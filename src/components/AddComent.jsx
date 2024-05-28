@@ -27,6 +27,10 @@ function AddComent({ id }) {
     const currentSuggestion = suggestions.findIndex(
       (suggestion) => String(suggestion.id) === String(id)
     );
+    const currentSuggestionOnlyStatusSuggestions =
+      onlyStatusSuggestion.findIndex(
+        (suggestion) => String(suggestion.id) === String(id)
+      );
 
     if (!suggestions[currentSuggestion].comments) {
       let comments = [];
@@ -35,11 +39,11 @@ function AddComent({ id }) {
         ...suggestions[currentSuggestion],
         comments,
       };
-      onlyStatusSuggestion[currentSuggestion] = {
-        ...onlyStatusSuggestion[currentSuggestion],
+      onlyStatusSuggestion[currentSuggestionOnlyStatusSuggestions] = {
+        ...onlyStatusSuggestion[currentSuggestionOnlyStatusSuggestions],
         comments,
       };
-    
+
       setOnlyStatusSuggestion([...onlyStatusSuggestion]);
       setSuggestions([...suggestions]);
       setCommentText("");

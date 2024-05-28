@@ -28,7 +28,18 @@ function RoadmapStatusBox({ status, description, list, color }) {
   );
 }
 
-const StyledRoadmapStatusBox = styled.div``;
+const StyledRoadmapStatusBox = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */
+  width: 35rem;
+  @media screen and (min-width: 768px) {
+    width: 22.3rem;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 35rem;
+  }
+`;
 
 const BoxTitle = styled.div`
   display: flex;
