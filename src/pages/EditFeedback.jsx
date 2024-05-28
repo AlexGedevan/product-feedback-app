@@ -105,7 +105,7 @@ function EditFeedback() {
       suggestions.filter((item) => item.status === "suggestion")
     );
     setRoadmapList((state) =>
-      state.filter((item) => item.status !== "suggestions")
+      suggestions.filter((item) => item.status !== "suggestions")
     );
 
     navigate("/");
