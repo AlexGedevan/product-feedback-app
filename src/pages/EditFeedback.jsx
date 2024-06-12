@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useSuggestion } from "../context/SuggestionContext";
 import GoBackComponent from "../ui/GoBackComponent";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FeedbackCategory from "../components/FeedbackCategory";
 import DesignMark from "../ui/DesignMark";
 import StatusSelector from "../components/StatusSelector";
